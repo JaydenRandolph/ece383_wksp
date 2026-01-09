@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<Checkpoint Version="23" Minor="0">
+	<BUILD_NUMBER Name="5239630"/>
+	<FULL_BUILD Name="SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024"/>
+	<PRODUCT Name="Vivado v2024.2 (64-bit)"/>
+	<Part Name="xc7a200tsbg484-1"/>
+	<FeatureSet Name="FeatureSet_Classic"/>
+	<NEXTGEN_VERSAL Name="0"/>
+	<BoardPart Name="digilentinc.com:nexys_video:part0:1.2"/>
+	<Top Name="scancode_decoder"/>
+	<DisableAutoIOBuffers Name="0"/>
+	<OutOfContext Name="0"/>
+	<MacroLevel Name="1"/>
+	<RunGenerated Name="1"/>
+	<HDPlatform Name="0"/>
+	<File Type="VERILOG_STUB" Name="scancode_decoder_stub.v" ModTime="1767937772"/>
+	<File Type="VHDL_STUB" Name="scancode_decoder_stub.vhdl" ModTime="1767937772"/>
+	<File Type="PARAMXML" Name="scancode_decoder_param.xml" ModTime="1767937772"/>
+	<File Type="PARAMXML" Name="scancode_decoder_param.xml" ModTime="1767937772"/>
+	<File Type="XN" Name="scancode_decoder.xn" ModTime="1767937772"/>
+	<File Type="EDIF" Name="scancode_decoder.edf" ModTime="1767937772"/>
+	<File Type="SHAPE" Name="scancode_decoder.shape" ModTime="1767937772"/>
+	<File Type="INCR" Name="scancode_decoder.incr" ModTime="1767937772"/>
+	<File Type="RDA" Name="scancode_decoder.rda" ModTime="1767937772"/>
+	<File Type="JSON_RDA" Name="scancode_decoder_rda.json" ModTime="1767937772"/>
+	<File Type="WDF" Name="scancode_decoder.wdf" ModTime="1767937772"/>
+	<File Type="SYNTH" Name="scancode_decoder.synth" ModTime="1767937772"/>
+</Checkpoint>
+
