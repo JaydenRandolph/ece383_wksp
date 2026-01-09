@@ -41,4 +41,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log scancode_decoder.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source scancode_decoder.tcl
+EAStep vivado -log scancode_decoder_tb.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source scancode_decoder_tb.tcl

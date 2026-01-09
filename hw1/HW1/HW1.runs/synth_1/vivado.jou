@@ -3,11 +3,11 @@
 # SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
 # IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
 # SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
-# Start of session at: Thu Jan  8 22:53:25 2026
-# Process ID         : 26852
+# Start of session at: Thu Jan  8 23:22:36 2026
+# Process ID         : 33284
 # Current directory  : C:/Users/C27Jayden.Randolph/ece383_wksp/hw1/HW1/HW1.runs/synth_1
-# Command line       : vivado.exe -log scancode_decoder.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source scancode_decoder.tcl
-# Log file           : C:/Users/C27Jayden.Randolph/ece383_wksp/hw1/HW1/HW1.runs/synth_1/scancode_decoder.vds
+# Command line       : vivado.exe -log scancode_decoder_tb.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source scancode_decoder_tb.tcl
+# Log file           : C:/Users/C27Jayden.Randolph/ece383_wksp/hw1/HW1/HW1.runs/synth_1/scancode_decoder_tb.vds
 # Journal file       : C:/Users/C27Jayden.Randolph/ece383_wksp/hw1/HW1/HW1.runs/synth_1\vivado.jou
 # Running On         : C27-5CG3121FS7
 # Platform           : Windows Server 2016 or Windows 10
@@ -19,5 +19,6 @@
 # Host memory        : 16442 MB
 # Swap memory        : 11274 MB
 # Total Virtual      : 27717 MB
-# Available Virtual  : 7341 MB
+# Available Virtual  : 6466 MB
 #-----------------------------------------------------------
+source scancode_decoder_tb.tcl -notrace
