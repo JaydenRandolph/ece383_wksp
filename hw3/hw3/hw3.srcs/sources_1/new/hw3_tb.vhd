@@ -24,7 +24,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx leaf cells in this code.
@@ -39,12 +39,12 @@ architecture Behavioral of hw3_tb is
 
     --the hw3 "box" I built and want to test
     component hw3
-        Port ( d : in STD_LOGIC_VECTOR (7 downto 0);
+        Port ( d : in unsigned (7 downto 0);
                h : out STD_LOGIC);
     end component;
     
     --wires that will hook up to the hw3 "box" I want to test
-    signal d_tb : std_logic_vector(7 downto 0);
+    signal d_tb : unsigned (7 downto 0);
     signal h_tb : std_logic;
 
 begin
