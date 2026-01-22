@@ -56,11 +56,13 @@ begin
         roll <= '0'; --defaults roll to 0
         if(reset_n = '0') then
             processQ <= (others => '0'); --resets Q
+        elsif((processQ = max_value - 1)and (reset_n = '1') and (ctrl = '1')) then
+            processQ <= processQ + 1;
+            roll <= '1'; --rolls over to 0
         elsif((processQ < max_value)and (reset_n = '1') and (ctrl = '1')) then
             processQ <= processQ + 1;
         elsif((processQ = max_value)and (reset_n = '1') and (ctrl = '1')) then
             processQ <= (others => '0');
-            roll <= '1'; 
         end if;
     end if;
 end process;
