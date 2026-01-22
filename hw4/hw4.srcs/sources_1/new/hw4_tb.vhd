@@ -56,7 +56,7 @@ architecture Behavioral of hw4_tb is
     signal Q0_tb : unsigned(3 downto 0);
     signal Q1_tb : unsigned(3 downto 0);
     
-    constant period : time := 10ns; --John helped me set this up
+    constant period : time := 10 ns; --John helped me set this up
 
 
 begin
