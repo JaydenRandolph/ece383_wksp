@@ -7473,3 +7473,10 @@ selectButton(RDIResource.WaveformView_NEXT_TRANSITION, "Waveform Viewer_waveform
 selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "vga_signal_generator.vhd", 4); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
 unMinimizeFrame(PAResourceOtoP.PAViews_TCL_CONSOLE, "Tcl Console"); // R (PAResourceOtoP.PAViews_TCL_CONSOLE, Tcl Console)
 // TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// Elapsed time: 840 seconds
+selectCodeEditor("vga_signal_generator.vhd", 1021, 128); // ae (vga_signal_generator.vhd)
+selectCodeEditor("vga_signal_generator.vhd", 1195, 60); // ae (vga_signal_generator.vhd)
+selectCodeEditor("vga_signal_generator.vhd", 1195, 60, false, false, false, false, true); // ae (vga_signal_generator.vhd) - Double Click
+selectCodeEditor("vga_signal_generator.vhd", 1195, 60); // ae (vga_signal_generator.vhd)
+typeControlKey((HResource) null, "vga_signal_generator.vhd", 'c'); // ae (vga_signal_generator.vhd)
+// HMemoryUtils.trashcanNow. Engine heap size: 950 MB. GUI used memory: 209 MB. Current time: 1/26/26, 11:02:24 PM MST
