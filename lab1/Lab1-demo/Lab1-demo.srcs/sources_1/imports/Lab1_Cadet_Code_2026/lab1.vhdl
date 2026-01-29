@@ -70,7 +70,7 @@ trigger.t <= unsigned(time_trigger_value);
 trigger.v <= unsigned(volt_trigger_value);
 
 -- Instantiate video
-video : video
+video1 : video
     port map(
     clk => clk,
     reset_n => reset_n,
@@ -82,11 +82,13 @@ video : video
     ch2 => ch2
     );
 -- Determine if ch1 and or ch2 are active
-if(position.row == position.column)
-    ch1.active = '1';
-
-if(position.row == -position.column)
-    ch2.active = '1'; 
+    ch1.active <= '1' when (pixel.coordinate.row = pixel.coordinate.col) else '0';
+    
+    ch2.active <= '1' when (pixel.coordinate.row = -pixel.coordinate.col) else '0';
+    
 -- Connect board hardware to signals
+    ch1.en <= '1' when (sw = "00") else '0';
+
+    ch2.en <= '1' when (sw = "01") else '0'; 
 	
 end structure;

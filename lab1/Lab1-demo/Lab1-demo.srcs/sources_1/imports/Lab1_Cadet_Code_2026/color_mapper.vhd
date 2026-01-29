@@ -18,8 +18,11 @@ end color_mapper;
 
 architecture color_mapper_arch of color_mapper is
 
-signal trigger_color : color_t := YELLOW; 
--- Add other colors you want to use here
+signal trigger_color : color_t := YELLOW;
+signal gridline_color : color_t := WHITE;
+signal ch1_color : color_t := GREEN;
+signal ch2_color : color_t := RED;
+signal background_color : color_t := BLACK; 
 
 signal is_vertical_gridline, is_horizontal_gridline, is_within_grid, is_trigger_time, is_trigger_volt, is_ch1_line, is_ch2_line,
     is_horizontal_hash, is_vertical_hash : boolean := false;
@@ -40,31 +43,40 @@ constant hash_vertical_spacing : integer := 10;
 begin
 
 -- Assign values to booleans here
-is_horizontal_gridline <= true when ((position.row - 20) mod 50 = 0) 
-                          else false;
-is_vertical_gridline <= true when ((position.col - 20) mod 60 = 0)
-                        else false;
-is_within_grid <= true when (((position.row - 20) < 401) and ((position.col - 20) < 601))
+is_within_grid <= true when ((position.row >= grid_start_row) and (position.row <= grid_stop_row)
+                  and (position.col >= grid_start_col) and (position.col <= grid_stop_col))
                   else false;
-                  
-                  
-                  --trigger.t is where the yellow triangle is on the x-axis
-                  --trigger.v is where the yellow triangle (a different one) is on the y-axis
-is_trigger_time <= true when (trigger.t = '1')
+
+is_horizontal_gridline <= true when is_within_grid and((position.row - grid_start_row) mod 50 = 0) 
+                          else false;
+is_vertical_gridline <= true when is_within_grid and ((position.col - grid_start_col) mod 60 = 0)
+                        else false;
+
+--0 <= abs(col - trigger.t) <= 5 - (row - 20)
+--__ <= "within ____ of the trigger position" <= "makes 5x5 square" ("makes the square into a triangle")
+
+is_trigger_time <= true when (is_within_grid and (((abs(to_integer(position.col) - to_integer(trigger.t))) <= (hash_size - (to_integer(position.row) - grid_start_row))) and (0 <= (hash_size - (to_integer(position.row) - grid_start_row)))))
                    else false;
-is_trigger_volt <= true when (trigger.v = '1')
+is_trigger_volt <= true when (is_within_grid and (((abs(to_integer(position.row) - to_integer(trigger.v))) <= (hash_size - (to_integer(position.col) - grid_start_col))) and (0 <= (hash_size - (to_integer(position.col) - grid_start_col)))))
                    else false;
-is_ch1_line <= true when (ch1.active = '1')
+is_ch1_line <= true when (is_within_grid and (ch1.active = '1'))
                else false;
-is_ch2_line <= true when (ch2.active = '1')
+is_ch2_line <= true when (is_within_grid and (ch2.active = '1'))
                else false;
-is_horizontal_hash <= true when ((position.row - 20) mod 15 = 0)
+               
+--0 <= abs(position.row - 20) % 15 <= 5               
+               
+is_horizontal_hash <= true when (is_within_grid and ((((position.col - grid_start_col) mod hash_horizontal_spacing) <= hash_size)))
                       else false;
-is_vertical_hash <= true when ((position.row - 20) mod 10 = 0)
+is_vertical_hash <= true when (is_within_grid and ((((position.row - grid_start_row) mod hash_vertical_spacing) <= hash_size)))
                     else false;
 
 -- Use your booleans to choose the color
-color <=        trigger_color when (is_trigger_time or is_trigger_volt) else -- You can do multiple lines like this
+color <= gridline_color when (is_horizontal_gridline or is_vertical_gridline or is_horizontal_hash or is_vertical_hash) else
+         trigger_color when (is_trigger_time or is_trigger_volt) else
+         ch1_color when (is_ch1_line) else --works
+         ch2_color when (is_ch2_line) else --works
+         background_color;
                                    
 
 end color_mapper_arch;

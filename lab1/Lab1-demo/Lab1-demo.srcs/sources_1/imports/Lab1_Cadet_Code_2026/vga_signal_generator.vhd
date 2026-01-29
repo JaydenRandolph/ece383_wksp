@@ -13,15 +13,16 @@ entity vga_signal_generator is
 end vga_signal_generator;
 
 architecture vga_signal_generator_arch of vga_signal_generator is
-
+    
     signal horizontal_roll, vertical_roll: std_logic := '0';		
     signal h_counter_ctrl, v_counter_ctrl: std_logic := '1'; -- Default to counting up
     signal h_sync_is_low, v_sync_is_low, h_blank_is_low, v_blank_is_low : boolean := false;
     signal current_pos : coordinate_t;
+    
 begin
 
 -- horizontal counter
-horizontal_counter : counter
+horizontal_counter : entity work.counter --ChatGPT + Jake told me this should fix the "counter not bound" autograder issue
     generic map(
       num_bits => 10,
       max_value => 799
@@ -38,7 +39,7 @@ horizontal_counter : counter
 v_counter_ctrl <= horizontal_roll;
 
 -- vertical counter
-vertical_counter : counter
+vertical_counter : entity work.counter
     generic map(
       num_bits => 10,
       max_value => 524
@@ -51,20 +52,26 @@ vertical_counter : counter
       Q => current_pos.row
     );
     
+h_sync_is_low <= (current_pos.col >= 655 and current_pos.col < 751);
+v_sync_is_low <= (current_pos.row >= 489 and current_pos.row < 491);
+h_blank_is_low <= (current_pos.col >= 0 and current_pos.col < 639) or (current_pos.col = 799);
+v_blank_is_low <= (current_pos.row >= 0 and current_pos.row < 479) or (current_pos.row = 524);
+    
 -- Assign VGA outputs in a gated manner
 process(clk)
 
 begin
     if(rising_edge(clk)) then
         --column logic        
-        vga.hsync <= '0' when ((current_pos.col >= 655 and current_pos.col < 751)) else '1';
+        vga.hsync <= '0' when h_sync_is_low else '1';
 
         --row logic
-        vga.vsync <= '0' when ((current_pos.row >= 489 and current_pos.row < 491)) else '1';
+        vga.vsync <= '0' when v_sync_is_low else '1';
             
         --blank logic
-        vga.blank <= '0' when ((current_pos.col < 639 and current_pos.row < 479) or (current_pos.row = 524) or (current_pos.col = 799 and current_pos.row /= 479)) else '1';
-                
+        vga.blank <= '0' when (h_blank_is_low and v_blank_is_low) else '1';
+        
+           
     end if;
 end process;
 
