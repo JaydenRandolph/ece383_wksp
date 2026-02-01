@@ -1,9 +1,9 @@
 # Lab 01: VGA Synchronization
 
-## Name: C2C Jayden Randolph
-## Course / Section: ECE 383 / T1
-## Instructor: LtCol James Trimble
-## Date Submitted: 31 Jan 2026
+**Name:** C2C Jayden Randolph  
+**Course / Section:** ECE 383 / T1  
+**Instructor:** LtCol James Trimble  
+**Date Submitted:** 31 Jan 2026  
 
 ## Introduction
 In this lab, I created a VGA controller in VHDL on our FPGA boards using counters, triggers, processes, and combinational logic. This report provides an overview of the design, implementation, testing, and results of our project.
@@ -18,21 +18,21 @@ In this lab, I created a VGA controller in VHDL on our FPGA boards using counter
 ### Components
 
 #### lab1
-##### Purpose:
+**Purpose:**
 Overarching file that contains the numeric steppers and video components. Also codes ch1 and ch2 logic.
-##### Inputs:
+**Inputs:**
 clk : in std_logic
 reset_n : in std_logic
 btn: in	std_logic_vector(4 downto 0)
 led: out std_logic_vector(1 downto 0)
 sw: in std_logic_vector(1 downto 0)
-##### Outputs:
+**Outputs:**
 tmds : out std_logic_vector(3 downto 0)
 tmdsb : out std_logic_vector(3 downto 0)
-##### Behavior:
+**Behavior:**
 Utilizes 2 numeric steppers (with debouncers) to iterate trigger triangle locations. Also instantiates the video component to output to the monitor. Codes the logic to determine when ch1 and ch2 are enabled (along with their respective LEDs).
 
-###### Ch1/Ch2 Logic
+**Ch1/Ch2 Logic**
 ch1.active <= '1' when (ch1.en = '1' and 
     is_within_grid and 
     (abs(to_integer(pixel.coordinate.row) - to_integer(pixel.coordinate.col)) = 0)) else --whole screen goes yellow if I don't have is_within_grid
@@ -44,51 +44,51 @@ ch2.active <= '1' when (ch2.en = '1' and
     '0';
 
 #### numeric_stepper
-##### Purpose:
+**Purpose:**
 Holds a value and increments or decrements it based on button presses
-##### Inputs:
+**Inputs:**
 clk : in std_logic
 reset_n : in std_logic      
 en : in std_logic                 
 up : in std_logic                  
 down : in std_logic
-##### Outputs:
+**Outputs:**
 q : out signed(num_bits-1 downto 0)
-##### Behavior:
+**Behavior:**
 Utilizes 2 debouncers to move the trigger triangle's location on the x and y axis. Implements logic to prevent the trigger triangle from going out of bounds and only change on the rising edge of the clock.
 
 #### debouncer
-##### Purpose:
+**Purpose:**
 Allow every button input to register once, not hundreds of times per press.
-##### Inputs:
+**Inputs:**
 clk : in std_logic
 reset_n : in std_logic
 btn_in : in std_logic
-##### Outputs:
+**Outputs:**
 btn_out : out std_logic
-##### Behavior:
+**Behavior:**
 Delays the button inputs by 20ms. Since clock operates at 100MHz, set delay counter to 2,000,000 and increment by 1 every clock cycle. This value will reach 2,000,000 at ~20ms, and then if a button input change is detected after then, then the debouncer allows that to happen.
 
 #### video
-##### Purpose:
+**Purpose:**
 Structural component to connect clock_wiz, VGA, and DVID
-##### Inputs:
+**Inputs:**
 clk : in std_logic
 reset_n : in std_logic
 trigger : in trigger_t
 ch1: in channel_t
 ch2: in channel_t
-##### Outputs:
+**Outputs:**
 tmds : out std_logic_vector(3 downto 0)
 tmdsb : out std_logic_vector(3 downto 0)
 position : out coordinate_t
-##### Behavior:
+**Behavior:**
 This component was not edited by me. Essentially instantiates vga and DVID components to allow output to the monitor.
 
 #### DVID
-##### Purpose:
+**Purpose:**
 Converts VGA signals into DVID bitstreams.
-##### Inputs:
+**Inputs:**
 clk : in std_logic
 clk_n : in std_logic
 clk_pixel : in std_logic
@@ -98,83 +98,83 @@ blue_p : in std_logic_vector(7 downto 0)
 blank : in std_logic
 hsync : in std_logic
 vsync : in std_logic
-##### Outputs:
+**Outputs:**
 red_s : out std_logic
 green_s : out std_logic
 blue_s : out std_logic
 clock_s : out std_logic
-##### Behavior:
+**Behavior:**
 This component was not edited by me. Just converts the vga signals into DVID bitstreams so we can use the HDMI cable for our monitors.
 
 
 #### clock_wiz_0
-##### Purpose:
+**Purpose:**
 File added to this project for use in video.
-##### Inputs:
+**Inputs:**
 See block diagram
-##### Outputs:
+**Outputs:**
 See block diagram
-##### Behavior:
+**Behavior:**
 This component was not edited by me. Did not touch this file in video.
 
 #### vga
-##### Purpose:
+**Purpose:**
 Generates VGA signal with graphics
-##### Inputs:
+**Inputs:**
 clk: in STD_LOGIC
 reset_n : in STD_LOGIC
 trigger : in trigger_t
 ch1 : in channel_t
 ch2 : in channel_t
-##### Outputs:
+**Outputs:**
 vga : out vga_t
 pixel : out pixel_t
-##### Behavior:
+**Behavior:**
 Instantiates and connects vga_signal_generator and color_mapper. Also relays position information for higher-level components such as lab1.
 
 #### color_mapper
-##### Purpose:
+**Purpose:**
 Determines the pixel color value based on the row, column, triggers, and channel inputs 
-##### Inputs:
+**Inputs:**
 position: in coordinate_t
 trigger : in trigger_t
 ch1 : in channel_t
 ch2 : in channel_t
-##### Outputs:
+**Outputs:**
 color : out color_t
-##### Behavior:
+**Behavior:**
 Utilizes complex grid logic to determine when the VGA needs to activate/color the pixels for the trigger triangles, ch1, ch2, gridlines, and background. Views where the position is as well as the trigger triangle.
 
 
 #### vga_signal_generator
-##### Purpose:
+**Purpose:**
 Generates the hsync, vsync, blank, and row, col for the VGA signal
-##### Inputs:
+**Inputs:**
 clk : in std_logic
 reset_n : in std_logic
-##### Outputs:
+**Outputs:**
 position: out coordinate_t
 vga : out vga_t
-##### Behavior:
+**Behavior:**
 Using 2 counters, implements logic to to code when the hsync, vsync, and blank should change while also determining the row and column for the VGA signal. 
 
-###### hsync/vsync/blank Logic
+**##### hsync/vsync/blank Logic**
 h_sync_is_low <= (current_pos.col >= 655 and current_pos.col < 751);
 v_sync_is_low <= (current_pos.row >= 489 and current_pos.row < 491);
 h_blank_is_low <= (current_pos.col >= 0 and current_pos.col < 639) or (current_pos.col = 799);
 v_blank_is_low <= (current_pos.row >= 0 and current_pos.row < 479) or (current_pos.row = 524);
 
 #### counter
-##### Purpose:
+**Purpose:**
 Synchronous counter based on a clock.
-##### Inputs:
+**Inputs:**
 clk : in std_logic
 reset_n : in std_logic
 ctrl : in std_logic
-##### Outputs:
+**Outputs:**
 roll : out std_logic
 Q : out unsigned (num_bits-1 downto 0)
-##### Behavior:
+**Behavior:**
 Counts on the rising edge of a clock until a max value is met. Then, the counter is reset and the rollover bit is triggered. Synchronously resets.
 
 ## Test/Debug
@@ -185,15 +185,15 @@ Counts on the rising edge of a clock until a max value is met. Then, the counter
 ### vsync triggered - row 489-491
 ![alt text](vsync_image.png)
 
-### blank triggered in relation to column count and row count
+### Blank triggered in relation to column count and row count
 
-#### blank triggered - column 1-640
+#### Blank triggered - column 1-640
 ![alt text](hsync_image-2.jpeg)
 
-#### blank triggered - row 524
+#### Blank triggered - row 524
 ![alt text](blank_row.png)
 
-### column count rolling over causing row count to increment and max counts for both counters - 524,799 to 0,0
+### Column count rolling over causing row count to increment and max counts for both counters - 524,799 to 0,0
 
 ![alt text](rollover.jpeg)
 
