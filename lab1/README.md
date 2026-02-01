@@ -11,9 +11,14 @@ In this lab, I created a VGA controller in VHDL on our FPGA boards using counter
 ## Design/Implementation
 ### VGA Diagram
 ![alt text](VGA_Diagram.jpeg)
+Diagram of the VGA screen
 
 ### Block Diagram
 ![alt text](<Lab01 Block Diagram - Randolph-1.jpeg>)
+Block diagram showing all components and (pretty much) every wire in this project
+
+### Verifying Functionality
+To verify functionality, I used a variety of resources during this lab. The first resources I used were instructor-given testbenches to verify the functionality of my counter, numeric_stepper, and vga_signal_generator files. If the testbenches passed and the resulting waveform looked correct, then I could be confident that my components worked properly. Additionally, I used https://madlittlemods.github.io/vga-simulator/ to verify my color_mapper was drawing everything correctly. This saved me a lot of time since I only had to simulate my design, not generate a bitstream, to test everything since bitstreams take significantly longer than simulations to generate. Finally, I generated a bitstream to my FPGA board to troubleshoot errors on the display. Through the use of these resources, I was able to verify the functionality of my lab.
 
 ### Components
 
@@ -33,15 +38,9 @@ tmdsb : out std_logic_vector(3 downto 0)
 Utilizes 2 numeric steppers (with debouncers) to iterate trigger triangle locations. Also instantiates the video component to output to the monitor. Codes the logic to determine when ch1 and ch2 are enabled (along with their respective LEDs).  
 
 **Ch1/Ch2 Logic**
-ch1.active <= '1' when (ch1.en = '1' and  
-    is_within_grid and  
-    (abs(to_integer(pixel.coordinate.row) - to_integer(pixel.coordinate.col)) = 0)) else --whole screen goes yellow if I don't have  is_within_grid  
-    '0';  
+ch1.active <= '1' when (ch1.en = '1' and is_within_grid and (abs(to_integer(pixel.coordinate.row) - to_integer(pixel.coordinate.col)) = 0)) else --whole screen goes yellow if I don't have  is_within_grid '0';  
       
-ch2.active <= '1' when (ch2.en = '1' and  
-    is_within_grid and  
-    (abs(to_integer(pixel.coordinate.row) - (440 - to_integer(pixel.coordinate.col))) = 0)) else  
-    '0';  
+ch2.active <= '1' when (ch2.en = '1' and is_within_grid and (abs(to_integer(pixel.coordinate.row) - (440 - to_integer(pixel.coordinate.col))) = 0)) else '0';  
 
 #### numeric_stepper
 **Purpose:**
@@ -158,7 +157,7 @@ vga : out vga_t
 **Behavior:**
 Using 2 counters, implements logic to to code when the hsync, vsync, and blank should change while also determining the row and column for the VGA signal.  
 
-**##### hsync/vsync/blank Logic**
+**hsync/vsync/blank Logic**
 h_sync_is_low <= (current_pos.col >= 655 and current_pos.col < 751);  
 v_sync_is_low <= (current_pos.row >= 489 and current_pos.row < 491);  
 h_blank_is_low <= (current_pos.col >= 0 and current_pos.col < 639) or (current_pos.col = 799);  
@@ -179,23 +178,27 @@ Counts on the rising edge of a clock until a max value is met. Then, the counter
 
 ## Test/Debug
 
-### hsync triggered - column 656-752
+### hsync triggered  
 ![alt text](hsync_image-1.jpeg)
+See columns 656-752  
 
-### vsync triggered - row 489-491
+### vsync triggered  
 ![alt text](vsync_image.png)
+See rows 489-491
 
 ### Blank triggered in relation to column count and row count
 
-#### Blank triggered - column 1-640
+#### Blank triggered
 ![alt text](hsync_image-2.jpeg)
+See columns 1-640
 
-#### Blank triggered - row 524
+#### Blank triggered
 ![alt text](blank_row.png)
+See row 524
 
-### Column count rolling over causing row count to increment and max counts for both counters - 524,799 to 0,0
-
+### Column count rolling over causing row count to increment and max counts for both counters
 ![alt text](rollover.jpeg)
+See rollover occur at 524,799 to 0,0
 
 ### Major Problems
 
