@@ -10,11 +10,11 @@ In this lab, I created a VGA controller in VHDL on our FPGA boards using counter
 
 ## Design/Implementation
 ### VGA Diagram
-![alt text](VGA_Diagram.jpeg)
+![alt text](VGA_Diagram.jpeg)  
 Diagram of the VGA screen
 
 ### Block Diagram
-![alt text](<Lab01 Block Diagram - Randolph-1.jpeg>)
+![alt text](<Lab01 Block Diagram - Randolph-1.jpeg>)  
 Block diagram showing all components and (pretty much) every wire in this project
 
 ### Verifying Functionality
@@ -178,26 +178,26 @@ Counts on the rising edge of a clock until a max value is met. Then, the counter
 
 ## Test/Debug
 
-### hsync triggered  
-![alt text](hsync_image-1.jpeg)
+### hsync Triggered  
+![alt text](hsync_image-1.jpeg)  
 See columns 656-752  
 
-### vsync triggered  
-![alt text](vsync_image.png)
+### vsync Triggered (column + row)
+![alt text](vsync_image.png)  
 See rows 489-491
 
 ### Blank triggered in relation to column count and row count
 
-#### Blank triggered
-![alt text](hsync_image-2.jpeg)
+#### Blank triggered (column)
+![alt text](hsync_image-2.jpeg)  
 See columns 1-640
 
-#### Blank triggered
-![alt text](blank_row.png)
+#### Blank triggered (row)
+![alt text](blank_row.png)  
 See row 524
 
 ### Column count rolling over causing row count to increment and max counts for both counters
-![alt text](rollover.jpeg)
+![alt text](rollover.jpeg)  
 See rollover occur at 524,799 to 0,0
 
 ### Major Problems
@@ -217,7 +217,10 @@ In the past, I've used "trial and error" to get my code to work. This is extreme
 Fully achieved required functionality at 2248 on 26 Jan 2026. Submitted 3 waveforms demonstrating proper implementation of hsync, vsync, and blanks to prove the VGA counters worked properly. Uploaded all code to Github and submitted images to Gradescope.
 
 ### Gate Check 2
-Fully achieved required functionality at 2303 on 28 Jan 2026. Submitted code to an autograde to confirm hsync, vsync, and blanks worked while also implementing color mapper. Achieved functionality of drawing ch1 but not ch2. Also managed to draw the hash marks and grid but not the trigger triangls. Uploaded all code to Github and submitted images to Gradescope.
+Fully achieved required functionality at 2303 on 28 Jan 2026. Submitted code to an autograder to confirm hsync, vsync, and blanks worked while also implementing color mapper. Achieved functionality of drawing ch1 but not ch2. Also managed to draw the hash marks and grid but not the trigger triangls. Uploaded all code to Github and submitted images to Gradescope.
+
+### Final Submission
+Fully achieved required functionality at ~2200 on 31 Jan 2026. Uploaded bitstream to FPGA and sent video to LtCol Trimble verifying switches worked, buttons worked, and everything displayed properly. Uploaded all code to Github and sent video to LtCol Trimble via Teams.
 
 ## Conclusion
-I learned a lot more about Vivado and VHDL in this lab. I have knocked the dust off my VHDL coding abilities while learning how to implement a VGA controller on my FPGA board. In future years, I would add a third gate check verifying the triggers worked since there was a massive jump between gate check 2 and the final submission. In future labs, I will use components such as my debouncer, counter, and numeric stepper made in this lab.
+I learned a lot more about Vivado and VHDL in this lab. I knocked the dust off my VHDL coding abilities while learning how to implement a VGA controller on my FPGA board. In future years, I would add a third gate check verifying the triggers worked since there was a massive jump between gate check 2 and the final submission. In future labs, I will use components such as my debouncer, counter, and numeric stepper made in this lab.
