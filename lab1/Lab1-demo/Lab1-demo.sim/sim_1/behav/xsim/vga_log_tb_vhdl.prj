@@ -1,14 +1,24 @@
 # compile vhdl design source files
 vhdl xil_defaultlib  \
-"../../../../Lab1-demo.srcs/sources_1/imports/Downloads/counter.vhd" \
-"../../../../Lab1-demo.srcs/sources_1/imports/Lab1_Cadet_Code_2026/ece383_pkg.vhd" \
+"../../../../Lab1-demo.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_sim_netlist.vhdl" \
 
 vhdl2008 xil_defaultlib  \
+"../../../../Lab1-demo.srcs/sources_1/imports/Lab1_Cadet_Code_2026/ece383_pkg.vhd" \
+"../../../../Lab1-demo.srcs/sources_1/imports/Downloads/counter.vhd" \
+"../../../../Lab1-demo.srcs/sources_1/new/debouncer.vhd" \
+"../../../../Lab1-demo.srcs/sources_1/imports/Lab1_Cadet_Code_2026/numeric_stepper.vhd" \
 "../../../../Lab1-demo.srcs/sources_1/imports/Lab1_Cadet_Code_2026/color_mapper.vhd" \
+"../../../../Lab1-demo.srcs/sources_1/imports/Lab1_Cadet_Code_2026/dvid.vhdl" \
+"../../../../Lab1-demo.srcs/sources_1/imports/Lab1_Cadet_Code_2026/video.vhdl" \
 "../../../../Lab1-demo.srcs/sources_1/imports/Lab1_Cadet_Code_2026/vga_signal_generator.vhd" \
+"../../../../Lab1-demo.srcs/sources_1/imports/Lab1_Cadet_Code_2026/vga.vhd" \
+"../../../../Lab1-demo.srcs/sources_1/imports/Lab1_Cadet_Code_2026/tdms.vhdl" \
+"../../../../Lab1-demo.srcs/sources_1/imports/Lab1_Cadet_Code_2026/lab1.vhdl" \
 
 vhdl xil_defaultlib  \
 "../../../../Lab1-demo.srcs/sim_1/imports/Downloads/vga_log_tb.vhd" \
+"../../../../Lab1-demo.srcs/sim_1/imports/Downloads/instructor_tb.vhd" \
+"../../../../Lab1-demo.srcs/sim_1/imports/Lab1_Cadet_Code_2026/numeric_stepper_tb.vhd" \
 
 # Do not sort compile order
 nosort

@@ -19,9 +19,29 @@ entity vga is
 end vga;
 
 architecture vga_arch of vga is
+		
+    signal position_wire : coordinate_t;
+    
 			
 begin
 
-
+    vga_signal_generator1 : vga_signal_generator
+        port map(
+            clk => clk,
+            reset_n => reset_n,
+            position => position_wire,
+            vga => vga
+        );
+    
+    color_mapper1 : color_mapper
+        port map (
+            color => pixel.color,
+            position => position_wire,
+            trigger => trigger,
+            ch1 => ch1,
+            ch2 => ch2
+        );    
+        
+pixel.coordinate <= position_wire;        
 
 end vga_arch;

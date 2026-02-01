@@ -22,7 +22,7 @@ architecture vga_signal_generator_arch of vga_signal_generator is
 begin
 
 -- horizontal counter
-horizontal_counter : entity work.counter --ChatGPT + Jake told me this should fix the "counter not bound" autograder issue
+horizontal_counter : entity work.counter --Jake explained you need "entity work.____" for this component to process
     generic map(
       num_bits => 10,
       max_value => 799
