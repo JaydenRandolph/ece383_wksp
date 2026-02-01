@@ -19,163 +19,163 @@ In this lab, I created a VGA controller in VHDL on our FPGA boards using counter
 
 #### lab1
 **Purpose:**
-Overarching file that contains the numeric steppers and video components. Also codes ch1 and ch2 logic.
+Overarching file that contains the numeric steppers and video components. Also codes ch1 and ch2 logic.  
 **Inputs:**
-clk : in std_logic
-reset_n : in std_logic
-btn: in	std_logic_vector(4 downto 0)
-led: out std_logic_vector(1 downto 0)
-sw: in std_logic_vector(1 downto 0)
+clk : in std_logic  
+reset_n : in std_logic  
+btn: in	std_logic_vector(4 downto 0)  
+led: out std_logic_vector(1 downto 0)  
+sw: in std_logic_vector(1 downto 0)  
 **Outputs:**
-tmds : out std_logic_vector(3 downto 0)
-tmdsb : out std_logic_vector(3 downto 0)
+tmds : out std_logic_vector(3 downto 0)  
+tmdsb : out std_logic_vector(3 downto 0)  
 **Behavior:**
-Utilizes 2 numeric steppers (with debouncers) to iterate trigger triangle locations. Also instantiates the video component to output to the monitor. Codes the logic to determine when ch1 and ch2 are enabled (along with their respective LEDs).
+Utilizes 2 numeric steppers (with debouncers) to iterate trigger triangle locations. Also instantiates the video component to output to the monitor. Codes the logic to determine when ch1 and ch2 are enabled (along with their respective LEDs).  
 
 **Ch1/Ch2 Logic**
-ch1.active <= '1' when (ch1.en = '1' and 
-    is_within_grid and 
-    (abs(to_integer(pixel.coordinate.row) - to_integer(pixel.coordinate.col)) = 0)) else --whole screen goes yellow if I don't have is_within_grid
-    '0';
-    
-ch2.active <= '1' when (ch2.en = '1' and 
-    is_within_grid and 
-    (abs(to_integer(pixel.coordinate.row) - (440 - to_integer(pixel.coordinate.col))) = 0)) else 
-    '0';
+ch1.active <= '1' when (ch1.en = '1' and  
+    is_within_grid and  
+    (abs(to_integer(pixel.coordinate.row) - to_integer(pixel.coordinate.col)) = 0)) else --whole screen goes yellow if I don't have  is_within_grid  
+    '0';  
+      
+ch2.active <= '1' when (ch2.en = '1' and  
+    is_within_grid and  
+    (abs(to_integer(pixel.coordinate.row) - (440 - to_integer(pixel.coordinate.col))) = 0)) else  
+    '0';  
 
 #### numeric_stepper
 **Purpose:**
-Holds a value and increments or decrements it based on button presses
+Holds a value and increments or decrements it based on button presses  
 **Inputs:**
-clk : in std_logic
-reset_n : in std_logic      
-en : in std_logic                 
-up : in std_logic                  
-down : in std_logic
+clk : in std_logic  
+reset_n : in std_logic  
+en : in std_logic  
+up : in std_logic  
+down : in std_logic  
 **Outputs:**
-q : out signed(num_bits-1 downto 0)
+q : out signed(num_bits-1 downto 0)  
 **Behavior:**
-Utilizes 2 debouncers to move the trigger triangle's location on the x and y axis. Implements logic to prevent the trigger triangle from going out of bounds and only change on the rising edge of the clock.
+Utilizes 2 debouncers to move the trigger triangle's location on the x and y axis. Implements logic to prevent the trigger triangle from going out of bounds and only change on the rising edge of the clock.  
 
 #### debouncer
 **Purpose:**
-Allow every button input to register once, not hundreds of times per press.
+Allow every button input to register once, not hundreds of times per press.  
 **Inputs:**
-clk : in std_logic
-reset_n : in std_logic
-btn_in : in std_logic
+clk : in std_logic  
+reset_n : in std_logic  
+btn_in : in std_logic  
 **Outputs:**
-btn_out : out std_logic
+btn_out : out std_logic  
 **Behavior:**
-Delays the button inputs by 20ms. Since clock operates at 100MHz, set delay counter to 2,000,000 and increment by 1 every clock cycle. This value will reach 2,000,000 at ~20ms, and then if a button input change is detected after then, then the debouncer allows that to happen.
+Delays the button inputs by 20ms. Since clock operates at 100MHz, set delay counter to 2,000,000 and increment by 1 every clock cycle. This value will reach 2,000,000 at ~20ms, and then if a button input change is detected after then, then the debouncer allows that to happen.  
 
 #### video
 **Purpose:**
-Structural component to connect clock_wiz, VGA, and DVID
+Structural component to connect clock_wiz, VGA, and DVID  
 **Inputs:**
-clk : in std_logic
-reset_n : in std_logic
-trigger : in trigger_t
-ch1: in channel_t
-ch2: in channel_t
+clk : in std_logic  
+reset_n : in std_logic  
+trigger : in trigger_t  
+ch1: in channel_t  
+ch2: in channel_t  
 **Outputs:**
-tmds : out std_logic_vector(3 downto 0)
-tmdsb : out std_logic_vector(3 downto 0)
-position : out coordinate_t
+tmds : out std_logic_vector(3 downto 0)  
+tmdsb : out std_logic_vector(3 downto 0)  
+position : out coordinate_t  
 **Behavior:**
-This component was not edited by me. Essentially instantiates vga and DVID components to allow output to the monitor.
+This component was not edited by me. Essentially instantiates vga and DVID components to allow output to the monitor.  
 
 #### DVID
 **Purpose:**
-Converts VGA signals into DVID bitstreams.
+Converts VGA signals into DVID bitstreams.  
 **Inputs:**
-clk : in std_logic
-clk_n : in std_logic
-clk_pixel : in std_logic
-red_p : in std_logic_vector(7 downto 0)
-green_p : in std_logic_vector(7 downto 0)
-blue_p : in std_logic_vector(7 downto 0)
-blank : in std_logic
-hsync : in std_logic
-vsync : in std_logic
+clk : in std_logic  
+clk_n : in std_logic    
+clk_pixel : in std_logic  
+red_p : in std_logic_vector(7 downto 0)  
+green_p : in std_logic_vector(7 downto 0)  
+blue_p : in std_logic_vector(7 downto 0)  
+blank : in std_logic  
+hsync : in std_logic  
+vsync : in std_logic    
 **Outputs:**
-red_s : out std_logic
-green_s : out std_logic
-blue_s : out std_logic
-clock_s : out std_logic
+red_s : out std_logic  
+green_s : out std_logic  
+blue_s : out std_logic   
+clock_s : out std_logic    
 **Behavior:**
-This component was not edited by me. Just converts the vga signals into DVID bitstreams so we can use the HDMI cable for our monitors.
+This component was not edited by me. Just converts the vga signals into DVID bitstreams so we can use the HDMI cable for our monitors.  
 
 
 #### clock_wiz_0
 **Purpose:**
-File added to this project for use in video.
+File added to this project for use in video.  
 **Inputs:**
-See block diagram
+See block diagram  
 **Outputs:**
-See block diagram
+See block diagram  
 **Behavior:**
-This component was not edited by me. Did not touch this file in video.
+This component was not edited by me. Did not touch this file in video.  
 
 #### vga
 **Purpose:**
-Generates VGA signal with graphics
+Generates VGA signal with graphics  
 **Inputs:**
-clk: in STD_LOGIC
-reset_n : in STD_LOGIC
-trigger : in trigger_t
-ch1 : in channel_t
-ch2 : in channel_t
+clk: in STD_LOGIC  
+reset_n : in STD_LOGIC  
+trigger : in trigger_t  
+ch1 : in channel_t  
+ch2 : in channel_t   
 **Outputs:**
-vga : out vga_t
-pixel : out pixel_t
+vga : out vga_t  
+pixel : out pixel_t  
 **Behavior:**
-Instantiates and connects vga_signal_generator and color_mapper. Also relays position information for higher-level components such as lab1.
+Instantiates and connects vga_signal_generator and color_mapper. Also relays position information for higher-level components such as lab1.  
 
 #### color_mapper
 **Purpose:**
-Determines the pixel color value based on the row, column, triggers, and channel inputs 
+Determines the pixel color value based on the row, column, triggers, and channel inputs  
 **Inputs:**
-position: in coordinate_t
-trigger : in trigger_t
-ch1 : in channel_t
-ch2 : in channel_t
+position: in coordinate_t  
+trigger : in trigger_t  
+ch1 : in channel_t  
+ch2 : in channel_t    
 **Outputs:**
-color : out color_t
+color : out color_t  
 **Behavior:**
-Utilizes complex grid logic to determine when the VGA needs to activate/color the pixels for the trigger triangles, ch1, ch2, gridlines, and background. Views where the position is as well as the trigger triangle.
+Utilizes complex grid logic to determine when the VGA needs to activate/color the pixels for the trigger triangles, ch1, ch2, gridlines, and background. Views where the position is as well as the trigger triangle.  
 
 
 #### vga_signal_generator
 **Purpose:**
-Generates the hsync, vsync, blank, and row, col for the VGA signal
+Generates the hsync, vsync, blank, and row, col for the VGA signal  
 **Inputs:**
-clk : in std_logic
-reset_n : in std_logic
+clk : in std_logic  
+reset_n : in std_logic  
 **Outputs:**
-position: out coordinate_t
-vga : out vga_t
+position: out coordinate_t  
+vga : out vga_t  
 **Behavior:**
-Using 2 counters, implements logic to to code when the hsync, vsync, and blank should change while also determining the row and column for the VGA signal. 
+Using 2 counters, implements logic to to code when the hsync, vsync, and blank should change while also determining the row and column for the VGA signal.  
 
 **##### hsync/vsync/blank Logic**
-h_sync_is_low <= (current_pos.col >= 655 and current_pos.col < 751);
-v_sync_is_low <= (current_pos.row >= 489 and current_pos.row < 491);
-h_blank_is_low <= (current_pos.col >= 0 and current_pos.col < 639) or (current_pos.col = 799);
-v_blank_is_low <= (current_pos.row >= 0 and current_pos.row < 479) or (current_pos.row = 524);
+h_sync_is_low <= (current_pos.col >= 655 and current_pos.col < 751);  
+v_sync_is_low <= (current_pos.row >= 489 and current_pos.row < 491);  
+h_blank_is_low <= (current_pos.col >= 0 and current_pos.col < 639) or (current_pos.col = 799);  
+v_blank_is_low <= (current_pos.row >= 0 and current_pos.row < 479) or (current_pos.row = 524);  
 
 #### counter
 **Purpose:**
-Synchronous counter based on a clock.
+Synchronous counter based on a clock.  
 **Inputs:**
-clk : in std_logic
-reset_n : in std_logic
-ctrl : in std_logic
+clk : in std_logic  
+reset_n : in std_logic  
+ctrl : in std_logic  
 **Outputs:**
-roll : out std_logic
-Q : out unsigned (num_bits-1 downto 0)
+roll : out std_logic  
+Q : out unsigned (num_bits-1 downto 0)  
 **Behavior:**
-Counts on the rising edge of a clock until a max value is met. Then, the counter is reset and the rollover bit is triggered. Synchronously resets.
+Counts on the rising edge of a clock until a max value is met. Then, the counter is reset and the rollover bit is triggered. Synchronously resets.  
 
 ## Test/Debug
 
