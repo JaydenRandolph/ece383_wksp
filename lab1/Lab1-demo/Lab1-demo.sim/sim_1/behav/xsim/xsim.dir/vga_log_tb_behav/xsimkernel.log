@@ -2,3 +2,6 @@ Running: xsim.dir/vga_log_tb_behav/xsimk.exe -simmode gui -wdb vga_log_tb_behav.
 Design successfully loaded
 Design Loading Memory Usage: 27472 KB (Peak: 27472 KB)
 Design Loading CPU Usage: 1093 ms
+Simulation completed
+Simulation Memory Usage: 28800 KB (Peak: 28800 KB)
+Simulation CPU Usage: 25452 ms
