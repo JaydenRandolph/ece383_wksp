@@ -1,0 +1,10 @@
+    oled: Lab2_OLED
+    port map (  clk => clk,
+            reset_n => reset_n,
+            oled_sdin => oled_sdin,
+            oled_sclk => oled_sclk,
+            oled_dc => oled_dc,
+            oled_res => oled_res,
+            oled_vbat => oled_vbat,
+            oled_vdd => oled_vdd,            
+            switch => switch);

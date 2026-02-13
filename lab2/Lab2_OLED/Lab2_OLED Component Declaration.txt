@@ -1,0 +1,11 @@
+    component Lab2_OLED
+    port (  clk         : in std_logic;
+            reset_n     : in std_logic;
+            oled_sdin   : out std_logic;
+            oled_sclk   : out std_logic;
+            oled_dc     : out std_logic;
+            oled_res    : out std_logic;
+            oled_vbat   : out std_logic;
+            oled_vdd    : out std_logic;            
+            switch      : in STD_LOGIC_VECTOR(7 downto 0));
+    end component;

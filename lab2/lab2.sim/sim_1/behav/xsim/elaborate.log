@@ -1,0 +1,57 @@
+Vivado Simulator v2024.2.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2024.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot lab2_behav xil_defaultlib.lab2 xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-4940] 'clk_wiz_0' remains a black box since it has no binding entity [C:/Users/C27Jayden.Randolph/ece383_wksp/lab1/Lab1_Cadet_Code_2026/video.vhdl:51]
+WARNING: [VRFC 10-4940] 'clk_wiz_1' remains a black box since it has no binding entity [C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/sources_1/imports/lab2/lab2_code_for_cadets_2026/Audio_Codec_Wrapper.vhd:150]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package unimacro.vcomponents
+Compiling package ieee.numeric_std
+Compiling package unisim.vcomponents
+Compiling package xil_defaultlib.ece383_pkg
+Compiling package ieee.std_logic_signed
+Compiling package ieee.vital_timing
+Compiling package ieee.vital_primitives
+Compiling package unisim.vpkg
+Compiling package ieee.math_real
+Compiling package ieee.std_logic_textio
+Compiling package vl.vl_types
+Compiling module xil_defaultlib.glbl
+Compiling architecture vga_arch of entity xil_defaultlib.vga [vga_default]
+Compiling architecture behavioral of entity xil_defaultlib.TDMS_encoder [tdms_encoder_default]
+Compiling architecture oddr_v of entity unisim.ODDR [\ODDR(ddr_clk_edge="SAME_EDGE",s...]
+Compiling architecture oddr2_v of entity unisim.ODDR2 [\ODDR2(ddr_alignment="C0",srtype...]
+Compiling architecture behavioral of entity xil_defaultlib.dvid [dvid_default]
+Compiling architecture obufds_v of entity unisim.OBUFDS [\OBUFDS(1,9)(1,7)(1,4)\]
+Compiling architecture structure of entity xil_defaultlib.video [video_default]
+Compiling architecture behavioral of entity xil_defaultlib.TWICtl [twictl_default]
+Compiling module xil_defaultlib.audio_init(stRegAddr1=4'b0,stReg...
+Compiling architecture behavioral of entity xil_defaultlib.i2s_ctl [i2s_ctl_default]
+Compiling architecture rb18_internal_vhdl_v of entity unisim.RB18_INTERNAL_VHDL [\RB18_INTERNAL_VHDL(bram_size=18...]
+Compiling architecture ramb18e1_v of entity unisim.RAMB18E1 [\RAMB18E1(init_00="1000101111000...]
+Compiling architecture bram_v of entity unimacro.BRAM_SDP_MACRO [\BRAM_SDP_MACRO(device="7SERIES"...]
+Compiling architecture rb18_internal_vhdl_v of entity unisim.RB18_INTERNAL_VHDL [\RB18_INTERNAL_VHDL(bram_size=18...]
+Compiling architecture ramb18e1_v of entity unisim.RAMB18E1 [\RAMB18E1(init_00="1000101111000...]
+Compiling architecture bram_v of entity unimacro.BRAM_SDP_MACRO [\BRAM_SDP_MACRO(device="7SERIES"...]
+Compiling architecture behavioral of entity xil_defaultlib.Audio_Codec_Wrapper [audio_codec_wrapper_default]
+Compiling architecture rb18_internal_vhdl_v of entity unisim.RB18_INTERNAL_VHDL [\RB18_INTERNAL_VHDL(bram_size=18...]
+Compiling architecture ramb18e1_v of entity unisim.RAMB18E1 [\RAMB18E1(init_00="1010011100011...]
+Compiling architecture bram_v of entity unimacro.BRAM_SDP_MACRO [\BRAM_SDP_MACRO(device="7SERIES"...]
+Compiling architecture rb18_internal_vhdl_v of entity unisim.RB18_INTERNAL_VHDL [\RB18_INTERNAL_VHDL(bram_size=18...]
+Compiling architecture ramb18e1_v of entity unisim.RAMB18E1 [\RAMB18E1(init_00="1110001001101...]
+Compiling architecture bram_v of entity unimacro.BRAM_SDP_MACRO [\BRAM_SDP_MACRO(device="7SERIES"...]
+Compiling architecture lab2_datapath_arch of entity xil_defaultlib.lab2_datapath [lab2_datapath_default]
+Compiling architecture behavioral of entity xil_defaultlib.lab2_fsm [lab2_fsm_default]
+Compiling architecture behavior of entity xil_defaultlib.lab2
+Built simulation snapshot lab2_behav

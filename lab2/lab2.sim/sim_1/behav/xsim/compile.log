@@ -1,0 +1,27 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/sources_1/imports/lab2/lab2_code_for_cadets_2026/audio_init.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module audio_init
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/sources_1/imports/lab2/lab2_code_for_cadets_2026/Audio_Codec_Wrapper.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'Audio_Codec_Wrapper'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/sources_1/imports/lab2/lab2_code_for_cadets_2026/TWICtl.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'TWICtl'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/sources_1/imports/lab2/lab2_code_for_cadets_2026/ece383_pkg.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab1/Lab1_Cadet_Code_2026/dvid.vhdl" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'dvid'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/sources_1/imports/lab2/lab2_code_for_cadets_2026/dvid.vhdl" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'dvid'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/sources_1/imports/lab2/lab2_code_for_cadets_2026/i2s_ctl.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'i2s_ctl'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/sources_1/imports/lab2/lab2_code_for_cadets_2026/lab2_datapath.vhdl" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'lab2_datapath'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/sources_1/imports/lab2/lab2_code_for_cadets_2026/lab2_fsm.vhdl" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'lab2_fsm'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab1/Lab1_Cadet_Code_2026/tdms.vhdl" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'TDMS_encoder'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab1/Lab1_Cadet_Code_2026/vga.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'vga'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab1/Lab1_Cadet_Code_2026/video.vhdl" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'video'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/sources_1/imports/lab2/lab2_code_for_cadets_2026/lab2.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'lab2'
