@@ -70,7 +70,7 @@ begin
         cw <= "000" when state = CountReset else
               "011" when state = Count else
               "110" when state = Write else
-              "010";
+              "010" when state = CountReady or state = StopWrite;
 
 end Behavioral;
 
