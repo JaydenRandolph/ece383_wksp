@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
-| Date             : Wed Feb 18 21:38:52 2026
+| Date             : Wed Feb 18 22:29:28 2026
 | Host             : C27-5CG3121FS7 running 64-bit major release  (build 9200)
 | Command          : report_power -file lab2_power_routed.rpt -pb lab2_power_summary_routed.pb -rpx lab2_power_routed.rpx
 | Design           : lab2
@@ -33,7 +33,7 @@ Table of Contents
 | Total On-Chip Power (W)  | 0.523        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.383        |
+| Dynamic (W)              | 0.382        |
 | Device Static (W)        | 0.140        |
 | Effective TJA (C/W)      | 3.3          |
 | Max Ambient (C)          | 83.3         |
@@ -52,13 +52,14 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Clocks         |     0.008 |       10 |       --- |             --- |
-| Slice Logic    |     0.002 |     2422 |       --- |             --- |
-|   LUT as Logic |     0.002 |     1152 |    133800 |            0.86 |
+| Clocks         |     0.007 |       10 |       --- |             --- |
+| Slice Logic    |     0.002 |     2416 |       --- |             --- |
+|   LUT as Logic |     0.002 |     1146 |    133800 |            0.86 |
 |   CARRY4       |    <0.001 |      172 |     33450 |            0.51 |
 |   Register     |    <0.001 |      720 |    267600 |            0.27 |
+|   F7/F8 Muxes  |    <0.001 |        1 |    133800 |           <0.01 |
 |   Others       |     0.000 |       73 |       --- |             --- |
-| Signals        |     0.002 |     1882 |       --- |             --- |
+| Signals        |     0.002 |     1869 |       --- |             --- |
 | Block RAM      |     0.003 |      2.5 |       365 |            0.68 |
 | MMCM           |     0.228 |        2 |        10 |           20.00 |
 | I/O            |     0.139 |       35 |       285 |           12.28 |
@@ -148,15 +149,15 @@ Table of Contents
 +------------------------------------+-----------+
 | Name                               | Power (W) |
 +------------------------------------+-----------+
-| lab2                               |     0.383 |
+| lab2                               |     0.382 |
 |   datapath                         |     0.372 |
 |     Audio_Codec                    |     0.125 |
 |       audio_inout                  |     0.001 |
 |       audiocodec_master_clock      |     0.123 |
 |     leftChannelMemory              |     0.001 |
 |     rightChannelMemory             |     0.001 |
-|     video_inst                     |     0.243 |
-|       inst_dvid                    |     0.002 |
+|     video_inst                     |     0.242 |
+|       inst_dvid                    |     0.001 |
 |       mmcm_adv_inst_display_clocks |     0.107 |
 |   oled                             |     0.003 |
 |     Example                        |     0.002 |

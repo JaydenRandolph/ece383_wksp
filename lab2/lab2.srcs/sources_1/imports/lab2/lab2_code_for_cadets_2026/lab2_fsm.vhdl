@@ -45,7 +45,8 @@ begin
 			else 
 				case state is
 					when CountReset =>
-					   if(sw(2) = '1') then state <= Count; end if; --this is when I implement trigger
+					   --if(sw(2) = '1') then state <= Count; end if; --this is when I implement trigger
+					   state <= Count;
 					when Count =>
 					   if(sw(1) = '1') then state <= CountReset;
 					   else state <= CountReady; end if;
@@ -66,10 +67,10 @@ begin
 	--		
 	-------------------------------------------------------------------------------
 	
-	cw <= "010" when state = CountReset else
-	      "001" when state = Count else
-	      "100" when state = Write else
-	      "000";
+        cw <= "000" when state = CountReset else
+              "011" when state = Count else
+              "110" when state = Write else
+              "010";
 
 end Behavioral;
 

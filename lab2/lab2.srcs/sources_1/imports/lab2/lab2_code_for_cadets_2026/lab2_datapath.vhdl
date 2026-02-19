@@ -206,7 +206,7 @@ Audio_Codec : Audio_Codec_Wrapper
     
     --MUX
     ch1.to_bram <= exLBus when (exSel = '1') else ch1.current_sample;
-    ch2.to_bram <= exLBus when (exSel = '1') else ch2.current_sample;
+    ch2.to_bram <= exRBus when (exSel = '1') else ch2.current_sample;
 
 
 
