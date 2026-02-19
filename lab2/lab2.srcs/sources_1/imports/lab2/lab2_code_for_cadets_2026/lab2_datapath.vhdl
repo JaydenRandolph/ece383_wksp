@@ -79,25 +79,26 @@ begin
 
     -- Determine if the current row matches the stored data from BRAM which means the channel should be active (drawn)
 	-- Add code here
-	
-	
-	
 	ch1.active <= '1' when (position.row = apply_offset(ch1.from_bram(15 downto 7))) else '0';
     ch2.active <= '1' when (position.row = apply_offset(ch2.from_bram(15 downto 7))) else '0';
 	-------------------------------------------------------------------------------
 	--  Buffer a copy of the sample memory to look for positive trigger crossing
 	--  "Loop back" digitized audio input to the output to confirm interface is working
 	-------------------------------------------------------------------------------
---	process (clk)
---	begin
---		if (rising_edge(clk)) then
---			if reset_n = '0' then
---				-- Add code here
---			elsif(sw_ready = '1') then
---				-- Add code here
---			end if;
---		end if;
---	end process;
+	process (clk)
+	begin
+		if (rising_edge(clk)) then
+			if reset_n = '0' then
+				ch1.to_ac <= (others => '0'); --resets to 0
+				ch2.to_ac <= (others => '0'); --resets to 0
+			elsif(sw_ready = '1') then
+				ch1.to_ac <= ch1.from_ac;
+				ch1.incoming_sample <= ch1.from_ac(15 downto 0);
+				ch2.to_ac <= ch2.from_ac;
+				ch2.incoming_sample <= ch2.from_ac(15 downto 0);
+			end if;
+		end if;
+	end process;
 
     -- Convert Signed sample from Codec into an unsigned value
     -- Add code here (Look at make_unsigned function)
@@ -108,6 +109,11 @@ begin
     -- Need logic for the FLAG register
 	-- Add code here
 	
+	
+	--DO THIS AT THE VERY END
+	
+	
+	
     ------------------------------------------------------------------------------
 	-- If a button has been pressed then increment of decrement the trigger time and Volt
 	--    should this be debounced?
@@ -115,6 +121,8 @@ begin
 	------------------------------------------------------------------------------
     
     -- Add 2 numeric steppers
+    
+    --did this later on in the code. Look at the bottom of this file
 	
 	-------------------------------------------------------------------------------
 	-- Address counter for RAM
@@ -122,7 +130,22 @@ begin
 	-- How high should it count?  Will it go to its start value on reset or load?
 	-------------------------------------------------------------------------------
 	-- Add code here.  Use a previously built counter.
-	
+	count : counter
+    generic map(
+           num_bits => 10,
+           max_value => 1023
+    )
+    port map( clk => clk,
+           reset_n => cw_counter_control(1),
+           ctrl => cw_counter_control(0),
+           roll => sw_last_address, --comparator
+           Q => writeCntr
+    );
+        
+    --MUX
+    write_address <= unsigned(exWrAddr) when (exSel = '1') else writeCntr;
+    
+    
 	-------------------------------------------------------------------------------
 	-- Triggering Logic: A positive crossing of the trigger occurs when the previous value is 
 	--	less than the trigger and the current value is greater than or equal to
@@ -157,9 +180,7 @@ begin
 
 -- Audio Codec stuff goes here
 
---is_live <=   --  '0' simulate audio; '1' live audio
---                  -- should a switch go here?
-                  
+is_live <= switch(IS_LIVE_SWITCH);  --  '0' simulate audio; '1' live audio                  
 
 Audio_Codec : Audio_Codec_Wrapper
     Port map ( clk => clk,
@@ -177,6 +198,16 @@ Audio_Codec : Audio_Codec_Wrapper
         scl => scl,
         sda => sda,
         sim_live => is_live);  --  '0' simulate audio; '1' live audio
+
+    --sign2Unsign
+    ch1.current_sample <= make_unsigned(ch1.incoming_sample);
+    ch2.current_sample <= make_unsigned(ch2.incoming_sample);
+
+    
+    --MUX
+    ch1.to_bram <= exLBus when (exSel = '1') else ch1.current_sample;
+    ch2.to_bram <= exLBus when (exSel = '1') else ch2.current_sample;
+
 
 
     -- BRAM stuff goes here
@@ -271,7 +302,7 @@ Audio_Codec : Audio_Codec_Wrapper
             WRADDR => std_logic_vector(write_address),                -- Input write address, width defined by write port depth
             WRCLK => clk,                   -- 1-bit input write clock
             --temporary WREN = 0
-            WREN => '0');              -- 1-bit input write port enable
+            WREN => cw_write_en);              -- 1-bit input write port enable
             -- End of BRAM_SDP_MACRO_inst instantiation
 
 
@@ -364,7 +395,7 @@ Audio_Codec : Audio_Codec_Wrapper
             WRADDR => std_logic_vector(write_address),                -- Input write address, width defined by write port depth
             WRCLK => clk,                   -- 1-bit input write clock
             --temporary WREN = 0
-            WREN => '0');              -- 1-bit input write port enable
+            WREN => cw_write_en);              -- 1-bit input write port enable
             -- End of BRAM_SDP_MACRO_inst instantiation
 
 -- Add numeric steppers for time and voltage trigger

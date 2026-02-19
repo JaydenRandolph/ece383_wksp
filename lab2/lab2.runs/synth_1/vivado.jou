@@ -3,8 +3,8 @@
 # SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
 # IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
 # SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
-# Start of session at: Fri Feb 13 10:57:49 2026
-# Process ID         : 17008
+# Start of session at: Wed Feb 18 21:33:46 2026
+# Process ID         : 94320
 # Current directory  : C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.runs/synth_1
 # Command line       : vivado.exe -log lab2.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source lab2.tcl
 # Log file           : C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.runs/synth_1/lab2.vds
@@ -17,8 +17,8 @@
 # CPU Physical cores : 8
 # CPU Logical cores  : 16
 # Host memory        : 16442 MB
-# Swap memory        : 19236 MB
-# Total Virtual      : 35679 MB
-# Available Virtual  : 6385 MB
+# Swap memory        : 17876 MB
+# Total Virtual      : 34319 MB
+# Available Virtual  : 5578 MB
 #-----------------------------------------------------------
 source lab2.tcl -notrace

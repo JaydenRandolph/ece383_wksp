@@ -123,8 +123,8 @@ OPTRACE "set parameters" START { }
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
   add_files -quiet C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.runs/synth_1/lab2.dcp
-  read_ip -quiet c:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/sources_1/ip/clk_wiz_1/clk_wiz_1.xci
-  read_ip -quiet c:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
+  read_ip -quiet C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/sources_1/ip/clk_wiz_1/clk_wiz_1.xci
+  read_ip -quiet C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
 OPTRACE "read constraints: implementation" START { }
   read_xdc C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/constrs_1/imports/lab2_code_for_cadets_2026/Lab2.xdc
 OPTRACE "read constraints: implementation" END { }

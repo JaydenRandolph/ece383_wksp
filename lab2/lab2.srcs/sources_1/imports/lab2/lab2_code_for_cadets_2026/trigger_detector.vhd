@@ -19,6 +19,10 @@ end entity trigger_detector;
 
 architecture trigger_detector_arch of trigger_detector is
     signal previous : unsigned(15 downto 0);
+    
+    type state_type is (CountReset, Count, CountReady, Write, StopWrite);
+	signal state: state_type;
+    
 begin
 
     -- Register to hold previous value
@@ -26,9 +30,11 @@ begin
     begin
         if rising_edge(clk) then
             if reset_n = '0' then
-                -- Add code here
+                state <= CountReset;
             elsif 
-                -- Add code here
+                case state is
+                    when CountReset =>
+                        if(sw(2)
             end if;
         end if;
     end process;
