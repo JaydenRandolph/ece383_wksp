@@ -93,9 +93,9 @@ begin
 				ch2.to_ac <= (others => '0'); --resets to 0
 			elsif(sw_ready = '1') then
 				ch1.to_ac <= ch1.from_ac;
-				ch1.incoming_sample <= ch1.from_ac(15 downto 0);
+				ch1.incoming_sample <= ch1.from_ac(17 downto 2);
 				ch2.to_ac <= ch2.from_ac;
-				ch2.incoming_sample <= ch2.from_ac(15 downto 0);
+				ch2.incoming_sample <= ch2.from_ac(17 downto 2);
 			end if;
 		end if;
 	end process;
@@ -162,6 +162,7 @@ begin
 --        crossed_trigger => sw_trigger
 --    );
 	
+
 	-------------------------------------------------------------------------------
 	-- Instantiate the video driver from Lab1 - should integrate smoothly
 	-------------------------------------------------------------------------------

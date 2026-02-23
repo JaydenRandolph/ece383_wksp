@@ -45,11 +45,12 @@ begin
 			else 
 				case state is
 					when CountReset =>
-					   --if(sw(2) = '1') then state <= Count; end if; --this is when I implement trigger
+					   if(sw(2) = '1') then state <= Count; end if; --this is when I implement trigger
 					   state <= Count;
 					when Count =>
 					   if(sw(1) = '1') then state <= CountReset;
-					   else state <= CountReady; end if;
+					   else state <= CountReady; end if;  --commenting out for debugging
+					   --state <= countReady;
 					when CountReady =>
 					   if(sw(0) = '1') then state <= Write; end if;
 					when Write =>
