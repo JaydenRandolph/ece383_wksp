@@ -1,0 +1,15 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../Keyboard_Demo.srcs/sources_1/imports/OLED_example2/ascii_rom.vhd" \
+"../../../../Keyboard_Demo.srcs/sources_1/imports/OLED_example2/delay.vhd" \
+"../../../../Keyboard_Demo.srcs/sources_1/imports/Homework_8/lec11.vhdl" \
+"../../../../Keyboard_Demo.srcs/sources_1/imports/new/lec11_cu.vhd" \
+"../../../../Keyboard_Demo.srcs/sources_1/imports/Homework_8/lec11_dp.vhdl" \
+"../../../../Keyboard_Demo.srcs/sources_1/imports/OLED_example2/oled_ctrl.vhd" \
+"../../../../Keyboard_Demo.srcs/sources_1/imports/OLED_example2/oled_ex.vhd" \
+"../../../../Keyboard_Demo.srcs/sources_1/imports/OLED_example2/oled_init.vhd" \
+"../../../../Keyboard_Demo.srcs/sources_1/imports/OLED_example2/spi_ctrl.vhd" \
+"../../../../Keyboard_Demo.srcs/sources_1/new/Keyboard_Demo.vhd" \
+
+# Do not sort compile order
+nosort

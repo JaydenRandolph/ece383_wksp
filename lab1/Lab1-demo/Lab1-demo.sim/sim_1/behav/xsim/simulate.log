@@ -1,0 +1,9 @@
+Time resolution is 1 ps
+Note: Testing h_sync
+Time: 100 ns  Iteration: 0  Process: /instructor_tb/test_process  File: C:/Users/C27Jayden.Randolph/ece383_wksp/lab1/Lab1-demo/Lab1-demo.srcs/sim_1/imports/Downloads/instructor_tb.vhd
+Note: Testing v_sync
+Time: 64040 ns  Iteration: 1  Process: /instructor_tb/test_process  File: C:/Users/C27Jayden.Randolph/ece383_wksp/lab1/Lab1-demo/Lab1-demo.srcs/sim_1/imports/Downloads/instructor_tb.vhd
+Note: Testing blank
+Time: 33568080 ns  Iteration: 1  Process: /instructor_tb/test_process  File: C:/Users/C27Jayden.Randolph/ece383_wksp/lab1/Lab1-demo/Lab1-demo.srcs/sim_1/imports/Downloads/instructor_tb.vhd
+Note: Testbench completed successfully.
+Time: 48960080 ns  Iteration: 1  Process: /instructor_tb/test_process  File: C:/Users/C27Jayden.Randolph/ece383_wksp/lab1/Lab1-demo/Lab1-demo.srcs/sim_1/imports/Downloads/instructor_tb.vhd

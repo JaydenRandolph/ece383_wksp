@@ -1,0 +1,106 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
+| Date         : Wed Feb 11 07:42:34 2026
+| Host         : C27-5CG3121FS7 running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file Keyboard_Demo_control_sets_placed.rpt
+| Design       : Keyboard_Demo
+| Device       : xc7a200t
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    28 |
+|    Minimum number of control sets                        |    28 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    99 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    28 |
+| >= 0 to < 4        |     2 |
+| >= 4 to < 6        |    12 |
+| >= 6 to < 8        |     3 |
+| >= 8 to < 10       |     1 |
+| >= 10 to < 12      |     2 |
+| >= 12 to < 14      |     4 |
+| >= 14 to < 16      |     1 |
+| >= 16              |     3 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              15 |            9 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |              57 |           17 |
+| Yes          | No                    | No                     |              65 |           24 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |              84 |           26 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++----------------+--------------------------------------------------+---------------------------------------------------------------+------------------+----------------+--------------+
+|  Clock Signal  |                   Enable Signal                  |                        Set/Reset Signal                       | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------+--------------------------------------------------+---------------------------------------------------------------+------------------+----------------+--------------+
+|  clk_IBUF_BUFG | oled/Initialize/temp_vbat2_out                   |                                                               |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | oled/Initialize/temp_vdd1_out                    |                                                               |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | oled/Example/temp_sdata[5]_i_1_n_0               |                                                               |                2 |              4 |         2.00 |
+|  clk_IBUF_BUFG | oled/Example/temp_sdata[5]_i_1_n_0               | oled/Example/temp_sdata[7]_i_1_n_0                            |                2 |              4 |         2.00 |
+|  clk_IBUF_BUFG | oled/Example/temp_page[1]_i_1_n_0                |                                                               |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | oled/Example/E[0]                                | oled/Initialize/delay_comp/SR[0]                              |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG |                                                  | oled/Initialize/spi_comp/counter                              |                1 |              5 |         5.00 |
+|  clk_IBUF_BUFG |                                                  | oled/Example/spi_comp/counter                                 |                1 |              5 |         5.00 |
+|  clk_IBUF_BUFG | oled/Initialize/delay_comp/E[0]                  | oled/Initialize/delay_comp/SR[0]                              |                2 |              5 |         2.50 |
+|  clk_IBUF_BUFG | oled/Initialize/spi_comp/temp_sdata              | oled/Initialize/spi_comp/FSM_onehot_current_state_reg_n_0_[0] |                2 |              5 |         2.50 |
+|  clk_IBUF_BUFG | oled/Initialize/after_state_0                    |                                                               |                1 |              5 |         5.00 |
+|  clk_IBUF_BUFG | oled/Example/delay_comp/E[0]                     | oled/Initialize/delay_comp/SR[0]                              |                2 |              5 |         2.50 |
+|  clk_IBUF_BUFG | oled/Example/spi_comp/temp_sdata                 | oled/Example/spi_comp/FSM_onehot_current_state_reg_n_0_[0]    |                2 |              5 |         2.50 |
+|  clk_IBUF_BUFG | oled/Example/g0_b0__3_n_0                        |                                                               |                2 |              5 |         2.50 |
+|  clk_IBUF_BUFG | ps2_receiver/cu/state_reg[0]_1[0]                | ps2_receiver/cu/SR[0]                                         |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG | oled/Initialize/spi_comp/shift_register          |                                                               |                2 |              7 |         3.50 |
+|  clk_IBUF_BUFG | oled/Example/spi_comp/shift_register             |                                                               |                2 |              7 |         3.50 |
+|  clk_IBUF_BUFG | oled/Initialize/temp_sdata                       |                                                               |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG | ps2_receiver/cu/E[0]                             | oled/Initialize/delay_comp/SR[0]                              |                3 |             10 |         3.33 |
+|  clk_IBUF_BUFG | oled/Example/g0_b0__4_n_0                        |                                                               |                3 |             10 |         3.33 |
+|  clk_IBUF_BUFG | oled/Initialize/delay_comp/ms_counter[0]_i_2_n_0 | oled/Initialize/delay_comp/ms_counter                         |                3 |             12 |         4.00 |
+|  clk_IBUF_BUFG | oled/Example/delay_comp/ms_counter[0]_i_2__0_n_0 | oled/Example/delay_comp/ms_counter                            |                3 |             12 |         4.00 |
+|  clk_IBUF_BUFG |                                                  | oled/Initialize/delay_comp/SR[0]                              |                5 |             13 |         2.60 |
+|  clk_IBUF_BUFG | oled/Example/temp_char                           |                                                               |                7 |             13 |         1.86 |
+|  clk_IBUF_BUFG |                                                  |                                                               |                9 |             15 |         1.67 |
+|  clk_IBUF_BUFG | ps2_receiver/cu/state_reg[0]_2[0]                | oled/Initialize/delay_comp/SR[0]                              |                4 |             16 |         4.00 |
+|  clk_IBUF_BUFG |                                                  | oled/Example/delay_comp/clk_counter[0]_i_1__0_n_0             |                5 |             17 |         3.40 |
+|  clk_IBUF_BUFG |                                                  | oled/Initialize/delay_comp/clk_counter[0]_i_1_n_0             |                5 |             17 |         3.40 |
++----------------+--------------------------------------------------+---------------------------------------------------------------+------------------+----------------+--------------+
+
+

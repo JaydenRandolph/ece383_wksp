@@ -45,7 +45,8 @@ constant break:	std_logic_vector(7 downto 0) := x"FF";
 ------------------------------------------------------------------------- 
 -- This is the number of keypresses being simulated.
 ------------------------------------------------------------------------- 
-constant N: integer := 3;
+constant N: integer := 2;
+--I changed this to 2 bc I have 2 presses now (7 and 9)
 
 ------------------------------------------------------------------------- 
 -- This type definition will be used below to store the keypresses
@@ -55,7 +56,7 @@ type test is array (0 to N-1) of std_logic_vector(7 downto 0);
 ------------------------------------------------------------------------- 
 -- This is the set of keypresses comprising the simulation.
 ------------------------------------------------------------------------- 
-signal event: test := (	one, two, three);
+signal event: test := (seven, nine);
 
 procedure CodeGen(char: in std_logic_vector(7 downto 0);
 

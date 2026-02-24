@@ -11,14 +11,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0.000000000 ms"></ZoomStartTime>
-      <ZoomEndTime time="315.600000001 ms"></ZoomEndTime>
-      <Cursor1Time time="260.015000000 ms"></Cursor1Time>
+      <ZoomEndTime time="633.000000001 ms"></ZoomEndTime>
+      <Cursor1Time time="60.000000000 ms"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="121"></NameColumnWidth>
+      <NameColumnWidth column_width="109"></NameColumnWidth>
       <ValueColumnWidth column_width="90"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="6" />
+   <WVObjectSize size="7" />
    <wvobject fp_name="/hw07_tb/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -49,5 +49,9 @@
       <obj_property name="ObjectShortName">processQ[10:0]</obj_property>
       <obj_property name="label">Count</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/hw07_tb/Q" type="array">
+      <obj_property name="ElementShortName">Q[4:0]</obj_property>
+      <obj_property name="ObjectShortName">Q[4:0]</obj_property>
    </wvobject>
 </wave_config>

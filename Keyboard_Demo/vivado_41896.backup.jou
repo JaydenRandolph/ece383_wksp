@@ -1,0 +1,40 @@
+#-----------------------------------------------------------
+# Vivado v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Wed Feb 11 06:02:25 2026
+# Process ID         : 41896
+# Current directory  : C:/Users/C27Jayden.Randolph/ece383_wksp/Keyboard_Demo
+# Command line       : vivado.exe -gui_launcher_event rodinguilauncherevent30964 C:\Users\C27Jayden.Randolph\ece383_wksp\Keyboard_Demo\Keyboard_Demo.xpr
+# Log file           : C:/Users/C27Jayden.Randolph/ece383_wksp/Keyboard_Demo/vivado.log
+# Journal file       : C:/Users/C27Jayden.Randolph/ece383_wksp/Keyboard_Demo\vivado.jou
+# Running On         : C27-5CG3121FS7
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 22631
+# Processor Detail   : AMD Ryzen 7 PRO 6850U with Radeon Graphics     
+# CPU Frequency      : 2695 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 16442 MB
+# Swap memory        : 16642 MB
+# Total Virtual      : 33085 MB
+# Available Virtual  : 8441 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/C27Jayden.Randolph/ece383_wksp/Keyboard_Demo/Keyboard_Demo.xpr
+update_compile_order -fileset sources_1
+add_files -norecurse -scan_for_includes C:/Users/C27Jayden.Randolph/ece383_wksp/hw8/hw8.srcs/sources_1/new/lec11_cu.vhd
+import_files -norecurse C:/Users/C27Jayden.Randolph/ece383_wksp/hw8/hw8.srcs/sources_1/new/lec11_cu.vhd
+update_compile_order -fileset sources_1
+launch_simulation
+source Keyboard_Demo.tcl
+run all
+run all
+run 50 ms
+run all
+run 50 ms
+close_sim
+launch_simulation
+source Keyboard_Demo.tcl
+close_sim

@@ -2,3 +2,6 @@ Running: xsim.dir/instructor_tb_behav/xsimk.exe -simmode gui -wdb instructor_tb_
 Design successfully loaded
 Design Loading Memory Usage: 28204 KB (Peak: 28204 KB)
 Design Loading CPU Usage: 890 ms
+Simulation completed
+Simulation Memory Usage: 36860 KB (Peak: 36860 KB)
+Simulation CPU Usage: 2859 ms
