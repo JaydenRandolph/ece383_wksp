@@ -30,8 +30,25 @@ architecture Behavioral of lab2_fsm is
 
     type state_type is (CountReset, Count, CountReady, Write, StopWrite);
 	signal state: state_type;
+	
+	signal state_dbg : std_logic_vector(2 downto 0);
+	signal cw_dbg : std_logic_vector(2 downto 0);
+	signal sw_dbg : std_logic_vector(2 downto 0);
+
+	attribute keep : string; attribute mark_debug : string;
+	attribute keep of state_dbg : signal is "true";
+	attribute mark_debug of state_dbg : signal is "true";
+	attribute keep of cw_dbg : signal is "true";
+	attribute mark_debug of cw_dbg : signal is "true";
+	attribute keep of sw_dbg : signal is "true";
+	attribute mark_debug of sw_dbg : signal is "true";
+	
 
 begin
+
+	-- convert enum -> slv for debug
+    state_dbg <= std_logic_vector(to_unsigned(state_type'pos(state), state_dbg'length));   
+	sw_dbg <= sw;
 
 	-------------------------------------------------------------------------------
 	--		SW		sw(0) = ready, sw(1) = last address, sw(2) = trigger
@@ -48,17 +65,22 @@ begin
 					   if(sw(2) = '1') then state <= Count; end if; --this is when I implement trigger
 					   state <= Count;
 					when Count =>
-					   if(sw(1) = '1') then state <= CountReset;
-					   else state <= CountReady; end if;  --commenting out for debugging
-					   --state <= countReady;
+					   state <= CountReady;
 					when CountReady =>
 					   if(sw(0) = '1') then state <= Write; end if;
+					   if(sw(1) = '1') then state <= CountReset; end if;
 					when Write =>
 					   state <= StopWrite;
 					when StopWrite =>
 					   if(sw(0) = '0') then state <= Count; end if;
 				end case;
 			end if;
+			
+	   cw_dbg <= "000" when state = CountReset else
+              "011" when state = Count else
+              "110" when state = Write else
+              "010" when state = CountReady or state = StopWrite;
+			
 		end if;
 	end process;
 
@@ -72,6 +94,7 @@ begin
               "011" when state = Count else
               "110" when state = Write else
               "010" when state = CountReady or state = StopWrite;
+             
 
 end Behavioral;
 

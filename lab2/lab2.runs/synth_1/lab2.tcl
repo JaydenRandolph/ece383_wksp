@@ -56,6 +56,9 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param tcl.collectionResultDisplayLimit 0
+set_param chipscope.maxJobs 4
+set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a200tsbg484-1
 
@@ -89,17 +92,20 @@ read_vhdl -library xil_defaultlib {
   C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/sources_1/imports/lab2/lab2_code_for_cadets_2026/dvid.vhdl
   C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/sources_1/imports/lab2/lab2_code_for_cadets_2026/i2s_ctl.vhd
   C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/sources_1/imports/lab2/lab2_code_for_cadets_2026/lab2_datapath.vhdl
-  C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/sources_1/imports/lab2/lab2_code_for_cadets_2026/lab2_fsm.vhdl
   C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/sources_1/imports/sources_1/imports/Lab1_Cadet_Code_2026/numeric_stepper.vhd
   C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/sources_1/imports/lab2/Lab2_OLED/oled_ex.vhd
   C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/sources_1/imports/lab2/Lab2_OLED/oled_init.vhd
   C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/sources_1/imports/lab2/Lab2_OLED/spi_ctrl.vhd
   C:/Users/C27Jayden.Randolph/ece383_wksp/lab1/Lab1_Cadet_Code_2026/tdms.vhdl
+  C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/sources_1/imports/lab2/lab2_code_for_cadets_2026/trigger_detector.vhd
   C:/Users/C27Jayden.Randolph/ece383_wksp/lab1/Lab1_Cadet_Code_2026/vga.vhd
   C:/Users/C27Jayden.Randolph/ece383_wksp/lab1/Lab1_Cadet_Code_2026/video.vhdl
   C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/sources_1/imports/lab2/lab2_code_for_cadets_2026/lab2.vhd
 }
-read_vhdl -vhdl2008 -library xil_defaultlib C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/sources_1/imports/Lab1_Cadet_Code_2026/vga_signal_generator.vhd
+read_vhdl -vhdl2008 -library xil_defaultlib {
+  C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/sources_1/imports/lab2/lab2_code_for_cadets_2026/lab2_fsm.vhdl
+  C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/sources_1/imports/Lab1_Cadet_Code_2026/vga_signal_generator.vhd
+}
 read_ip -quiet C:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.srcs/sources_1/ip/clk_wiz_1/clk_wiz_1.xci
 set_property used_in_implementation false [get_files -all c:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.gen/sources_1/ip/clk_wiz_1/clk_wiz_1_board.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/C27Jayden.Randolph/ece383_wksp/lab2/lab2.gen/sources_1/ip/clk_wiz_1/clk_wiz_1.xdc]

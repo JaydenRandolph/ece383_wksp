@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<Checkpoint Version="23" Minor="0">
+	<BUILD_NUMBER Name="5239630"/>
+	<FULL_BUILD Name="SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024"/>
+	<PRODUCT Name="Vivado v2024.2 (64-bit)"/>
+	<Part Name="xc7a200tsbg484-1"/>
+	<FeatureSet Name="FeatureSet_Classic"/>
+	<NEXTGEN_VERSAL Name="0"/>
+	<BoardPart Name="digilentinc.com:nexys_video:part0:1.2"/>
+	<Top Name="lab2"/>
+	<DisableAutoIOBuffers Name="0"/>
+	<OutOfContext Name="0"/>
+	<MacroLevel Name="1"/>
+	<RunGenerated Name="1"/>
+	<HDPlatform Name="0"/>
+	<XPMLIBRARY Name="XPM_CDC"/>
+	<File Type="VERILOG_STUB" Name="lab2_stub.v" ModTime="1771949873"/>
+	<File Type="VHDL_STUB" Name="lab2_stub.vhdl" ModTime="1771949873"/>
+	<File Type="PARAMXML" Name="lab2_param.xml" ModTime="1771949873"/>
+	<File Type="PARAMXML" Name="lab2_param.xml" ModTime="1771949873"/>
+	<File Type="SHAPE" Name="lab2.shape" ModTime="1771949873"/>
+	<File Type="XN" Name="lab2.xn" ModTime="1771949873"/>
+	<File Type="EDIF" Name="lab2.edf" ModTime="1771949873"/>
+	<File Type="INCR" Name="lab2.incr" ModTime="1771949873"/>
+	<File Type="RDA" Name="lab2.rda" ModTime="1771949873"/>
+	<File Type="JSON_RDA" Name="lab2_rda.json" ModTime="1771949873"/>
+	<File Type="WDF" Name="lab2.wdf" ModTime="1771949873"/>
+	<File Type="SYNTH" Name="lab2.synth" ModTime="1771949873"/>
+</Checkpoint>
+

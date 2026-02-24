@@ -152,15 +152,16 @@ begin
 	-- the trigger.  Set the status word to alert the FSM that it should start 
 	-- recording the samples.
 	-------------------------------------------------------------------------------		
---	trig_detect : trigger_detector
---    port map (
---        clk  => clk,
---        reset_n => reset_n,
---        threshold => '1', --temp
---        ready => sw_ready,
---        monitored_signal => '1', --temp
---        crossed_trigger => sw_trigger
---    );
+	trig_detect : trigger_detector
+    port map (
+        clk  => clk,
+        reset_n => reset_n,
+        threshold => unsigned(num_stepper_v), --triggerVolt
+        ready => sw_ready,
+        monitored_signal => unsigned(ch1.current_sample(15 downto 8)), --Current
+        crossed_trigger => sw_trigger
+    );
+
 	
 
 	-------------------------------------------------------------------------------
@@ -302,7 +303,6 @@ Audio_Codec : Audio_Codec_Wrapper
             WE => "11",                     -- Input write enable, width defined by write port depth
             WRADDR => std_logic_vector(write_address),                -- Input write address, width defined by write port depth
             WRCLK => clk,                   -- 1-bit input write clock
-            --temporary WREN = 0
             WREN => cw_write_en);              -- 1-bit input write port enable
             -- End of BRAM_SDP_MACRO_inst instantiation
 
@@ -395,7 +395,6 @@ Audio_Codec : Audio_Codec_Wrapper
             WE => "11",                     -- Input write enable, width defined by write port depth
             WRADDR => std_logic_vector(write_address),                -- Input write address, width defined by write port depth
             WRCLK => clk,                   -- 1-bit input write clock
-            --temporary WREN = 0
             WREN => cw_write_en);              -- 1-bit input write port enable
             -- End of BRAM_SDP_MACRO_inst instantiation
 
@@ -443,7 +442,8 @@ trigger.v <= unsigned(num_stepper_v);
     
     
     cw_counter_control <= cw(1 downto 0);
-    cw_write_en <= cw(2);
+    
+    cw_write_en <= exWen when exSel = '1' else cw(2);
 
 end lab2_datapath_arch;
 
