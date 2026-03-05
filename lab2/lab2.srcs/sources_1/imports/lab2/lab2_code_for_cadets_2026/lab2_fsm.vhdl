@@ -63,7 +63,6 @@ begin
 				case state is
 					when CountReset =>
 					   if(sw(2) = '1') then state <= Count; end if; --this is when I implement trigger
-					   state <= Count;
 					when Count =>
 					   state <= CountReady;
 					when CountReady =>

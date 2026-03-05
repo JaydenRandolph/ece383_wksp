@@ -143,7 +143,7 @@ begin
     );
         
     --MUX
-    write_address <= unsigned(exWrAddr) when (exSel = '1') else writeCntr;
+    write_address <= unsigned(exWrAddr) when (exSel = '1') else (writeCntr + 25); --offset of 20
     
     
 	-------------------------------------------------------------------------------
@@ -158,7 +158,7 @@ begin
         reset_n => reset_n,
         threshold => unsigned(num_stepper_v), --triggerVolt
         ready => sw_ready,
-        monitored_signal => unsigned(ch1.current_sample(15 downto 8)), --Current
+        monitored_signal => apply_offset(ch1.current_sample(15 downto 7)), --Current
         crossed_trigger => sw_trigger
     );
 

@@ -15,6 +15,10 @@
     </Object>
   </ObjectList>
   <ObjectList object_type="hw_ila" gui_info="">
+    <Object name="" gui_info="">
+      <Properties Property="CONTROL.TRIGGER_CONDITION" value="AND"/>
+      <Properties Property="CORE_REFRESH_RATE_MS" value="500"/>
+    </Object>
     <Object name="u_ila_0" gui_info="">
       <Properties Property="CONTROL.TRIGGER_CONDITION" value="AND"/>
       <Properties Property="CORE_REFRESH_RATE_MS" value="500"/>
@@ -22,7 +26,7 @@
   </ObjectList>
   <ObjectList object_type="hw_probe" gui_info="">
     <Object name="control/state_dbg[2:0]" gui_info="Trigger Setup=0"/>
-    <Object name="control/sw_dbg[2:0]" gui_info="Trigger Setup=1"/>
+    <Object name="control/sw_dbg[2:0]" gui_info="Trigger Setup=0"/>
   </ObjectList>
   <probeset name="hw project" active="false">
     <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
