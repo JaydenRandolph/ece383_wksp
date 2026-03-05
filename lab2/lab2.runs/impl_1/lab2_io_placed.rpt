@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
-| Date                      : Wed Mar  4 09:12:38 2026
+| Date                      : Wed Mar  4 23:00:59 2026
 | Host                      : C27-5CG3121FS7 running 64-bit major release  (build 9200)
 | Command                   : report_io -file lab2_io_placed.rpt
 | Design                    : lab2
@@ -231,8 +231,8 @@ Table of Contents
 | G18        |              | High Range | IO_L4N_T0_15                 | User IO       |             |      15 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | G19        |              | High Range | VCCO_15                      | VCCO          |             |      15 |            |      |                     |                      |    1.20 |            |           |          |      |                  |              |                   |              |
 | G20        |              | High Range | IO_L8N_T1_AD10N_15           | User IO       |             |      15 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
-| G21        | switch[3]    | High Range | IO_L24P_T3_16                | INPUT         | LVCMOS12    |      16 |            |      |                     |                 NONE |         | FIXED      |           |          |      | NONE             |              |                   |              |
-| G22        | switch[2]    | High Range | IO_L24N_T3_16                | INPUT         | LVCMOS12    |      16 |            |      |                     |                 NONE |         | FIXED      |           |          |      | NONE             |              |                   |              |
+| G21        | switch[2]    | High Range | IO_L24P_T3_16                | INPUT         | LVCMOS12    |      16 |            |      |                     |                 NONE |         | FIXED      |           |          |      | NONE             |              |                   |              |
+| G22        | switch[3]    | High Range | IO_L24N_T3_16                | INPUT         | LVCMOS12    |      16 |            |      |                     |                 NONE |         | FIXED      |           |          |      | NONE             |              |                   |              |
 | H1         |              |            | GND                          | GND           |             |         |            |      |                     |                      |     0.0 |            |           |          |      |                  |              |                   |              |
 | H2         |              | High Range | IO_L8P_T1_AD14P_35           | User IO       |             |      35 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | H3         |              | High Range | IO_L11P_T1_SRCC_35           | User IO       |             |      35 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |

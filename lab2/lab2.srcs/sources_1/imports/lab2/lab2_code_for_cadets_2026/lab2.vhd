@@ -3,6 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 library UNIMACRO;
 use UNIMACRO.vcomponents.all;	
+use work.ece383_pkg.all;
 
  entity lab2 is
      Port ( clk : in  STD_LOGIC;
@@ -95,7 +96,7 @@ begin
 		switch => switch(3 downto 0),
 		exWrAddr => "0000000000",
 		exWen => '0',
-		exSel => switch(2),
+		exSel => switch(EXT_SWITCH),
 		Lbus_out => OPEN,
 		Rbus_out => OPEN,
 		exLbus => "0000000000000000",

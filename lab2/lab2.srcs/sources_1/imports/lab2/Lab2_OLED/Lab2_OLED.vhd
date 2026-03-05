@@ -73,9 +73,14 @@ architecture Lab2_OLED_arch of Lab2_OLED is
     signal example_done     : std_logic;
     
     signal rst              : std_logic;
+    
+    signal inv_switch : std_logic;
+    
 begin
 
     rst <= reset_n;
+    
+    inv_switch <= not(switch(3));
     
     Initialize: oled_init port map (clk => clk,
                                     rst => rst,
@@ -92,7 +97,9 @@ begin
                                 rst => rst,
                                 en => example_en,
                                 sdout => example_sdata,
-                                switch => switch,  
+                                switch(7 downto 4)  => switch(7 downto 4),  
+                                switch(3) => inv_switch, --making my OLED display the right values
+                                switch(2 downto 0) => switch(2 downto 0),
                                 oled_sclk => example_spi_clk,
                                 oled_dc => example_dc,
                                 fin => example_done);

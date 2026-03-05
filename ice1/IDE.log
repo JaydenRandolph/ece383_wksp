@@ -1,0 +1,18 @@
+02:39:14 DEBUG : Logs will be stored at 'C:/Users/C27Jayden.Randolph/ece383_wksp/ice1/IDE.log'.
+02:39:44 INFO  : Launching XSCT server: xsct.bat -n  -interactive C:\Users\C27Jayden.Randolph\ece383_wksp\ice1\temp_xsdb_launch_script.tcl
+02:39:47 INFO  : Registering command handlers for Vitis TCF services
+02:39:47 INFO  : Platform repository initialization has completed.
+02:39:58 INFO  : XSCT server has started successfully.
+02:40:13 INFO  : Successfully done setting XSCT server connection channel  
+02:40:13 INFO  : plnx-install-location is set to ''
+02:40:13 INFO  : Successfully done query RDI_DATADIR 
+02:40:13 INFO  : Successfully done setting workspace for the tool. 
+02:42:01 INFO  : Result from executing command 'getProjects': design_1_wrapper
+02:42:01 INFO  : Result from executing command 'getPlatforms': 
+02:42:01 WARN  : An unexpected exception occurred in the module 'platform project logging'
+02:42:01 INFO  : Platform 'design_1_wrapper' is added to custom repositories.
+02:42:08 INFO  : Platform 'design_1_wrapper' is added to custom repositories.
+02:44:31 INFO  : Result from executing command 'getProjects': design_1_wrapper
+02:44:31 INFO  : Result from executing command 'getPlatforms': design_1_wrapper|C:/Users/C27Jayden.Randolph/ece383_wksp/ice1/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm
+02:44:32 INFO  : Checking for BSP changes to sync application flags for project 'ublaze1'...
+02:46:35 INFO  : Checking for BSP changes to sync application flags for project 'ublaze1'...

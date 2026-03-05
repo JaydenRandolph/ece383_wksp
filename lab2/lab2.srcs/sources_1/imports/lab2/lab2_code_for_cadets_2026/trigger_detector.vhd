@@ -37,16 +37,11 @@ begin
                     L <= '1';
                 else
                     L <= '0'; end if;
-                if (monitored_signal > threshold) then
+                if (monitored_signal >= threshold) then
                     G <= '1';
                 else 
                     G <= '0'; end if;
-                previous <= monitored_signal;
-            else
-                L <= '0';
-                G <= '0';
-                previous <= (others => '0');
-            end if;
+                previous <= monitored_signal; end if;
         end if;
     end process;
 

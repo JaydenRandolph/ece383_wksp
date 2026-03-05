@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
-| Date             : Wed Mar  4 09:14:03 2026
+| Date             : Wed Mar  4 23:03:04 2026
 | Host             : C27-5CG3121FS7 running 64-bit major release  (build 9200)
 | Command          : report_power -file lab2_power_routed.rpt -pb lab2_power_summary_routed.pb -rpx lab2_power_routed.rpx
 | Design           : lab2
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.533        |
+| Total On-Chip Power (W)  | 0.537        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.392        |
+| Dynamic (W)              | 0.395        |
 | Device Static (W)        | 0.141        |
 | Effective TJA (C/W)      | 3.3          |
 | Max Ambient (C)          | 83.2         |
@@ -54,19 +54,19 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |     0.017 |       11 |       --- |             --- |
 | Slice Logic              |     0.003 |     6262 |       --- |             --- |
-|   LUT as Logic           |     0.003 |     2279 |    133800 |            1.70 |
-|   Register               |    <0.001 |     2693 |    267600 |            1.01 |
+|   LUT as Logic           |     0.003 |     2283 |    133800 |            1.71 |
+|   Register               |    <0.001 |     2694 |    267600 |            1.01 |
 |   CARRY4                 |    <0.001 |      217 |     33450 |            0.65 |
 |   LUT as Shift Register  |    <0.001 |       75 |     46200 |            0.16 |
 |   LUT as Distributed RAM |    <0.001 |       24 |     46200 |            0.05 |
 |   F7/F8 Muxes            |    <0.001 |       30 |    133800 |            0.02 |
 |   Others                 |     0.000 |      355 |       --- |             --- |
-| Signals                  |     0.004 |     4782 |       --- |             --- |
+| Signals                  |     0.004 |     4777 |       --- |             --- |
 | Block RAM                |     0.004 |     20.5 |       365 |            5.62 |
 | MMCM                     |     0.228 |        2 |        10 |           20.00 |
-| I/O                      |     0.136 |       35 |       285 |           12.28 |
+| I/O                      |     0.139 |       35 |       285 |           12.28 |
 | Static Power             |     0.141 |          |           |                 |
-| Total                    |     0.533 |          |           |                 |
+| Total                    |     0.537 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -76,9 +76,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.061 |       0.029 |      0.032 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.062 |       0.029 |      0.032 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.157 |       0.127 |      0.031 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.046 |       0.041 |      0.005 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.047 |       0.042 |      0.005 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -138,7 +138,7 @@ Table of Contents
 | clk_out2_clk_wiz_1                                                                         | datapath/Audio_Codec/audiocodec_master_clock/inst/clk_out2_clk_wiz_1     |            20.0 |
 | clkfbout_clk_wiz_0                                                                         | datapath/video_inst/mmcm_adv_inst_display_clocks/inst/clkfbout_clk_wiz_0 |            10.0 |
 | clkfbout_clk_wiz_1                                                                         | datapath/Audio_Codec/audiocodec_master_clock/inst/clkfbout_clk_wiz_1     |            10.0 |
-| datapath/video_inst/mmcm_adv_inst_display_clocks/inst/clk_in1                              | clk_IBUF_BUFG                                                            |            10.0 |
+| datapath/Audio_Codec/audiocodec_master_clock/inst/clk_in1                                  | clk_IBUF_BUFG                                                            |            10.0 |
 | dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/SERIES7_BSCAN.bscan_inst/TCK | dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/TCK        |            33.0 |
 +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+-----------------+
 
@@ -152,13 +152,13 @@ Table of Contents
 +------------------------------------+-----------+
 | Name                               | Power (W) |
 +------------------------------------+-----------+
-| lab2                               |     0.392 |
+| lab2                               |     0.395 |
 |   datapath                         |     0.372 |
 |     Audio_Codec                    |     0.125 |
 |       audiocodec_master_clock      |     0.123 |
 |     leftChannelMemory              |     0.001 |
 |     rightChannelMemory             |     0.001 |
-|     video_inst                     |     0.243 |
+|     video_inst                     |     0.242 |
 |       inst_dvid                    |     0.001 |
 |       mmcm_adv_inst_display_clocks |     0.107 |
 |   dbg_hub                          |     0.004 |
@@ -167,9 +167,9 @@ Table of Contents
 |   oled                             |     0.003 |
 |     Example                        |     0.002 |
 |     Initialize                     |     0.001 |
-|   u_ila_0                          |     0.010 |
-|     inst                           |     0.010 |
-|       ila_core_inst                |     0.010 |
+|   u_ila_0                          |     0.011 |
+|     inst                           |     0.011 |
+|       ila_core_inst                |     0.011 |
 +------------------------------------+-----------+
 
 
