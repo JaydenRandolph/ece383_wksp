@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
--- Name:	Template by George York (modified from Jeff Falkinburg)
--- Date:	Spring 2023
+-- Name:	C2C Jayden Randolph
+-- Date:	05Mar2026
 -- File:    lab2_fsm.vhd
 -- HW:	    Lab 2 
 -- Pupr:	Lab 2 Finite State Machine for the write circuitry.  
