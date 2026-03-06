@@ -1,5 +1,5 @@
 -- Numeric Stepper: Holds a value and increments or decrements it based on button presses
--- James Trimble, 20 Jan 2026
+-- C2C Jayden Randolph, 05Mar2026
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;

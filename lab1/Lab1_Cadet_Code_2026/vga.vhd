@@ -1,5 +1,5 @@
 ------
--- Lt Col James Trimble, 15 Jan 2025
+-- C2C Jayden Randolph, 05Mar2026
 -- Generates VGA signal with graphics
 ------
 

@@ -3,70 +3,97 @@
 **Name:** C2C Jayden Randolph  
 **Course / Section:** ECE 383 / T1  
 **Instructor:** LtCol James Trimble  
-**Date Submitted:** 4 Mar 2026  
+**Date Submitted:** 5 Mar 2026  
 
 ## Introduction
-In this lab, I created a VGA controller in VHDL on our FPGA boards using counters, triggers, processes, and combinational logic. This report provides an overview of the design, implementation, testing, and results of our project.
+In this lab, I integrated the video display controller developed in Lab 1 with the audio codec on the Nexys Video board to build a basic 2-channel oscilloscope. This report provides an overview of the design, implementation, testing, and results of my project.
 
 ## Design/Implementation
-### VGA Diagram
-![alt text](VGA_Diagram.jpeg)  
-Diagram of the VGA screen
 
 ### Block Diagram
-![alt text](<Lab01 Block Diagram - Randolph-1.jpeg>)  
+![alt text](<Lab02 Block Diagram - Randolph-1.png>)
+
+
+--Change this image!!
+
+
+
 Block diagram showing all components and (pretty much) every wire in this project
+**Note:** OLED components, debouncer, DVID, VGA, and other minor components not included in block diagram to save space. Non-essential components in this lab.
+
+
+### State Transition Diagram
+
+
+FINISH THIS - from my iPad
+
+
+
+
+
+State transition for Lab2_cu
 
 ### Verifying Functionality
-To verify functionality, I used a variety of resources during this lab. The first resources I used were instructor-given testbenches to verify the functionality of my counter, numeric_stepper, and vga_signal_generator files. If the testbenches passed and the resulting waveform looked correct, then I could be confident that my components worked properly. Additionally, I used https://madlittlemods.github.io/vga-simulator/ to verify my color_mapper was drawing everything correctly. This saved me a lot of time since I only had to simulate my design, not generate a bitstream, to test everything since bitstreams take significantly longer than simulations to generate. Finally, I generated a bitstream to my FPGA board to troubleshoot errors on the display. Through the use of these resources, I was able to verify the functionality of my lab.
+To verify functionality, I primarily used the FPGA board. Through each gate check, I generated a bitstream and uploaded the bitstream to the FPGA board. Once on the board, I attempted to complete the each gate check's/the final functionality's requirements. If the bitstream failed to generate, the I would first check the component that caused the bitstream to fail. If I still could not get the bitstream to generate, I utilized __________________ TALK ABOUT IVA
+
+
+
+
+The first resources I used were instructor-given testbenches to verify the functionality of my counter, numeric_stepper, and vga_signal_generator files. If the testbenches passed and the resulting waveform looked correct, then I could be confident that my components worked properly. Additionally, I used https://madlittlemods.github.io/vga-simulator/ to verify my color_mapper was drawing everything correctly. This saved me a lot of time since I only had to simulate my design, not generate a bitstream, to test everything since bitstreams take significantly longer than simulations to generate. Finally, I generated a bitstream to my FPGA board to troubleshoot errors on the display. Through the use of these resources, I was able to verify the functionality of my lab.
 
 ### Components
 
-#### lab1
+#### lab2
 **Purpose:**
-Overarching file that contains the numeric steppers and video components. Also codes ch1 and ch2 logic.  
+Overarching file that contains the all components.
 **Inputs:**
-clk : in std_logic  
-reset_n : in std_logic  
-btn: in	std_logic_vector(4 downto 0)  
-led: out std_logic_vector(1 downto 0)  
-sw: in std_logic_vector(1 downto 0)  
+clk : in std_logic
+reset_n : in std_logic
+ac_adc_sdata : in std_logic
+scl : inout std_logic
+sda : inout std_logic
+switch: in std_logic_vector(7 downto 0)
+btn: in	std_logic_vector(4 downto 0) 
 **Outputs:**
-tmds : out std_logic_vector(3 downto 0)  
-tmdsb : out std_logic_vector(3 downto 0)  
+ac_mclk : out std_logic
+ac_dac_sdata : out std_logic
+ac_bclk : out std_logic
+ac_lrclk : out std_logic 
+ac_dac_sdata : out std_logic
+ac_bclk : out std_logic
+ac_lrclk : out std_logic
+tmds : out std_logic_vector(3 downto 0)
+tmdsb : out std_logic_vector(3 downto 0)
+oled_sdin : out std_logic
+oled_sclk : out std_logic
+oled_dc : out std_logic
+oled_res : out std_logic
+oled_vbat : out std_logic
+oled_vdd : out std_logic 
 **Behavior:**
-Utilizes 2 numeric steppers (with debouncers) to iterate trigger triangle locations. Also instantiates the video component to output to the monitor. Codes the logic to determine when ch1 and ch2 are enabled (along with their respective LEDs).  
+Utilizes datapath component and control component (fsm) to set up the oscilloscope via the FPGA.
 
-**Ch1/Ch2 Logic**
-ch1.active <= '1' when (ch1.en = '1' and is_within_grid and (abs(to_integer(pixel.coordinate.row) - to_integer(pixel.coordinate.col)) = 0)) else --whole screen goes yellow if I don't have  is_within_grid '0';  
-      
-ch2.active <= '1' when (ch2.en = '1' and is_within_grid and (abs(to_integer(pixel.coordinate.row) - (440 - to_integer(pixel.coordinate.col))) = 0)) else '0';  
-
-#### numeric_stepper
+#### lab2_dp
 **Purpose:**
-Holds a value and increments or decrements it based on button presses  
 **Inputs:**
-clk : in std_logic  
-reset_n : in std_logic  
-en : in std_logic  
-up : in std_logic  
-down : in std_logic  
 **Outputs:**
-q : out signed(num_bits-1 downto 0)  
 **Behavior:**
-Utilizes 2 debouncers to move the trigger triangle's location on the x and y axis. Implements logic to prevent the trigger triangle from going out of bounds and only change on the rising edge of the clock.  
 
-#### debouncer
+#### lab2_cu
 **Purpose:**
-Allow every button input to register once, not hundreds of times per press.  
 **Inputs:**
-clk : in std_logic  
-reset_n : in std_logic  
-btn_in : in std_logic  
 **Outputs:**
-btn_out : out std_logic  
 **Behavior:**
-Delays the button inputs by 20ms. Since clock operates at 100MHz, set delay counter to 2,000,000 and increment by 1 every clock cycle. This value will reach 2,000,000 at ~20ms, and then if a button input change is detected after then, then the debouncer allows that to happen.  
+
+#### BRAM_SDP
+**Purpose:**
+FPGA memory built into the FPGA
+**Inputs:**
+See block diagram  
+**Outputs:**
+See block diagram  
+**Behavior:**
+This component was not edited by me. Did not touch this file in the datapath file. 
 
 #### video
 **Purpose:**
@@ -82,86 +109,42 @@ tmds : out std_logic_vector(3 downto 0)
 tmdsb : out std_logic_vector(3 downto 0)  
 position : out coordinate_t  
 **Behavior:**
-This component was not edited by me. Essentially instantiates vga and DVID components to allow output to the monitor.  
+This component was not edited by me. Essentially instantiates vga and DVID components to allow output to the monitor.
 
-#### DVID
+#### audio_codec_wrapper
 **Purpose:**
-Converts VGA signals into DVID bitstreams.  
-**Inputs:**
-clk : in std_logic  
-clk_n : in std_logic    
-clk_pixel : in std_logic  
-red_p : in std_logic_vector(7 downto 0)  
-green_p : in std_logic_vector(7 downto 0)  
-blue_p : in std_logic_vector(7 downto 0)  
-blank : in std_logic  
-hsync : in std_logic  
-vsync : in std_logic    
-**Outputs:**
-red_s : out std_logic  
-green_s : out std_logic  
-blue_s : out std_logic   
-clock_s : out std_logic    
-**Behavior:**
-This component was not edited by me. Just converts the vga signals into DVID bitstreams so we can use the HDMI cable for our monitors.  
-
-
-#### clock_wiz_0
-**Purpose:**
-File added to this project for use in video.  
+File added to this project to monitor and relay incoming sound samples' data.
 **Inputs:**
 See block diagram  
 **Outputs:**
 See block diagram  
 **Behavior:**
-This component was not edited by me. Did not touch this file in video.  
+This component was not edited by me. Did not touch this file in the datapath file. 
 
-#### vga
+#### clock_wiz_1
 **Purpose:**
-Generates VGA signal with graphics  
+File added to this project for use in audio_codec_wrapper.  
 **Inputs:**
-clk: in STD_LOGIC  
-reset_n : in STD_LOGIC  
-trigger : in trigger_t  
-ch1 : in channel_t  
-ch2 : in channel_t   
+See block diagram  
 **Outputs:**
-vga : out vga_t  
-pixel : out pixel_t  
+See block diagram  
 **Behavior:**
-Instantiates and connects vga_signal_generator and color_mapper. Also relays position information for higher-level components such as lab1.  
+This component was not edited by me. Did not touch this file in audio_codec_wrapper. 
 
-#### color_mapper
+#### trigger_detector
 **Purpose:**
-Determines the pixel color value based on the row, column, triggers, and channel inputs  
+Utilizes the trigger to intercept the oscilloscope's waveform on the trigger.
 **Inputs:**
-position: in coordinate_t  
-trigger : in trigger_t  
-ch1 : in channel_t  
-ch2 : in channel_t    
+clk : in std_logic
+reset_n : in std_logic
+threshold : in unsigned
+ready : in std_logic
+monitored_signal : in  unsigned
 **Outputs:**
-color : out color_t  
+crossed_trigger : out std_logic
 **Behavior:**
-Utilizes complex grid logic to determine when the VGA needs to activate/color the pixels for the trigger triangles, ch1, ch2, gridlines, and background. Views where the position is as well as the trigger triangle.  
+Monitors incoming oscilloscope data to intersect the oscilloscope with the left side of the screen (on the trigger).
 
-
-#### vga_signal_generator
-**Purpose:**
-Generates the hsync, vsync, blank, and row, col for the VGA signal  
-**Inputs:**
-clk : in std_logic  
-reset_n : in std_logic  
-**Outputs:**
-position: out coordinate_t  
-vga : out vga_t  
-**Behavior:**
-Using 2 counters, implements logic to to code when the hsync, vsync, and blank should change while also determining the row and column for the VGA signal.  
-
-**hsync/vsync/blank Logic**
-h_sync_is_low <= (current_pos.col >= 655 and current_pos.col < 751);  
-v_sync_is_low <= (current_pos.row >= 489 and current_pos.row < 491);  
-h_blank_is_low <= (current_pos.col >= 0 and current_pos.col < 639) or (current_pos.col = 799);  
-v_blank_is_low <= (current_pos.row >= 0 and current_pos.row < 479) or (current_pos.row = 524);  
 
 #### counter
 **Purpose:**
@@ -174,53 +157,78 @@ ctrl : in std_logic
 roll : out std_logic  
 Q : out unsigned (num_bits-1 downto 0)  
 **Behavior:**
-Counts on the rising edge of a clock until a max value is met. Then, the counter is reset and the rollover bit is triggered. Synchronously resets.  
+Counts on the rising edge of a clock until a max value is met. Then, the counter is reset and the rollover bit is triggered. Synchronously resets. 
+
+#### numeric_stepper
+**Purpose:**
+Holds a value and increments or decrements it based on button presses. 
+**Inputs:**
+clk : in std_logic  
+reset_n : in std_logic  
+en : in std_logic  
+up : in std_logic  
+down : in std_logic  
+**Outputs:**
+q : out signed(num_bits-1 downto 0)  
+**Behavior:**
+Utilizes 2 debouncers to move the trigger triangle's location on the x and y axis. Implements logic to prevent the trigger triangle from going out of bounds and only change on the rising edge of the clock. 
+
+#### debouncer (not included in block diagram, but utilized with numeric_stepper)
+**Purpose:**
+Allow every button input to register once, not hundreds of times per press.  
+**Inputs:**
+clk : in std_logic  
+reset_n : in std_logic  
+btn_in : in std_logic  
+**Outputs:**
+btn_out : out std_logic  
+**Behavior:**
+Delays the button inputs by 20ms. Since clock operates at 100MHz, set delay counter to 2,000,000 and increment by 1 every clock cycle. This value will reach 2,000,000 at ~20ms, and then if a button input change is detected after then, then the debouncer allows that to happen. 
+
+#### flag_register
+**Purpose:**
+Logic to be used in Lab 3 for flag
+**Inputs:**
+clk : in std_logic
+set : in std_logic
+clear : in std_logic
+**Outputs:**
+Q : out std_logic
+**Behavior:**
+Transfers information in a "2-line handshake" between components and processors. Sends data, waits for processors to pick up data, then sends more data to the processor.
+
+
 
 ## Test/Debug
 
-### hsync Triggered  
-![alt text](hsync_image-1.jpeg)  
-See columns 656-752  
-
-### vsync Triggered (column + row)
-![alt text](vsync_image.png)  
-See rows 489-491
-
-### Blank triggered in relation to column count and row count
-
-#### Blank triggered (column)
-![alt text](hsync_image-2.jpeg)  
-See columns 1-640
-
-#### Blank triggered (row)
-![alt text](blank_row.png)  
-See row 524
-
-### Column count rolling over causing row count to increment and max counts for both counters
-![alt text](rollover.jpeg)  
-See rollover occur at 524,799 to 0,0
+As discussed earlier, I debugged using the FPGA board and the Vivado's Integrated Logic Analyzer. The FGPA verified functionality whereas Vivado's ILA verified my FSM.
 
 ### Major Problems
 
-#### Ch1 and Ch2 not appearing on screen
-Ch1 and Ch2 kept failing to appear on screen for most of the lab. A few issues caused this. First, the given .xdc file did not have the switches enabled. Additionally, I forgot to wire pixel.coordinate in my vga.vhd file causing the position to never register. After fixing these two issues, the lines finally appeared correctly on my display.
+#### Trigger memory problems
+Since I applied an offset of 25 to my trigger to sync up the triangle and the waveform, the waveform would write again on the left side of the screen (ie continue writing from the waveform on the right side of the graph). Since about 5 pixels were redrawing on the left side of the screen, I changed my offset from 20 to 25. This made the "extra pixels" "draw" on the left side of the screen where my vga was not drawing. This fixed the problem.
 
-#### Triggers not initializing at center axises
-The trigger triangles repeatedly failed to generate on the center axis and would generate off screen. Since they generated off screen, the deltas were off causing the triangles to not line up with the hash marks. I solved this by going into my numeric_stepper file and initializing/changing the reset values of process_q to the midpoints on the graph.
+#### OLED inverted controls
+During testing, I realized my OLED controls were inverted. When the FPGA was live, the OLED was on SIM. To fix this, I edited the OLED file to invert switch's third bit to help with debugging.
 
-#### Bitstream taking forever to generate
-In the past, I've used "trial and error" to get my code to work. This is extremely inefficient to do, and I learned throughout this lab that the bitstream takes at least 5 minutes to generate. In the future, I need to use more testbenches to streamline the debugging process and not waste so much time waiting for a bit stream to generate.
+
+#### Incorrect FSM
+Around gate check 3, my finite state machine appeared right, but was not working. This is because my FSM was waiting for trigger inputs, but I had not yet implemented my trigger. To solve this problem, I utilizied Vivado's ILA to run my code on a virtual FPGA board and analyze where my FSM went wrong. After doing this a few times, I found the trigger problem and updated my FSM to ignore this input for gate check 3.
+
 
 ## Results
 
 ### Gate Check 1
-Fully achieved required functionality at 2248 on 26 Jan 2026. Submitted 3 waveforms demonstrating proper implementation of hsync, vsync, and blanks to prove the VGA counters worked properly. Uploaded all code to Github and submitted images to Gradescope.
+Fully achieved required functionality at 1355 on 12 Feb 2026. Submitted via instructor demo. Both waveforms show up. Uploaded all code to Github.
 
 ### Gate Check 2
-Fully achieved required functionality at 2303 on 28 Jan 2026. Submitted code to an autograder to confirm hsync, vsync, and blanks worked while also implementing color mapper. Achieved functionality of drawing ch1 but not ch2. Also managed to draw the hash marks and grid but not the trigger triangls. Uploaded all code to Github and submitted images to Gradescope.
+Fully achieved required functionality at 2359 on 16 Feb 2026. Submitted via instructor demo. Scrolling achieved. Achieved functionality of drawing ch1 but not ch2. Also managed to draw the hash marks and grid but not the trigger triangls. Uploaded all code to Github.
+
+### Gate Check 3
+Fully achieved required functionality at 1001 on 19 Feb 2026. Submitted via instructor demo. Live audio input achieved. Uploaded all code to Github.
 
 ### Final Submission
-Fully achieved required functionality at ~2200 on 31 Jan 2026. Uploaded bitstream to FPGA and sent video to LtCol Trimble verifying switches worked, buttons worked, and everything displayed properly. Uploaded all code to Github and sent video to LtCol Trimble via Teams.
+Achieved full functionality on 05 March 2026. Submitted via video demo in gradescope. Fully triggered live and simulated audio works, trigger's work, Uploaded all code to Github.
 
 ## Conclusion
-I learned a lot more about Vivado and VHDL in this lab. I knocked the dust off my VHDL coding abilities while learning how to implement a VGA controller on my FPGA board. In future years, I would add a third gate check verifying the triggers worked since there was a massive jump between gate check 2 and the final submission. In future labs, I will use components such as my debouncer, counter, and numeric stepper made in this lab.
+I learned a lot more about Vivado and VHDL in this lab. I knocked the dust off my VHDL coding abilities while learning how memory is used with FPGAs. In future labs, I would have the FSM be a homework so we could receive feedback on it prior to starting the lab. I will use these components such as my debouncer, counter, and numeric stepper in future labs.

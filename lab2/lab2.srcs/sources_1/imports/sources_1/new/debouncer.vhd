@@ -1,21 +1,6 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 01/30/2026 03:02:52 PM
--- Design Name: 
--- Module Name: debouncer - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
+-- C2C Jayden Randolph, 05Mar2026
+-- Debouncer implemented from Lab 1
 ----------------------------------------------------------------------------------
 
 

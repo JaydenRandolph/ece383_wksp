@@ -1,5 +1,6 @@
 ----------------------------------------------------------------------------------
 -- While the monitored_signal crosses the threshold, trigger is set
+-- C2C Jayden Randolph, 05Mar2026
 ----------------------------------------------------------------------------------
 
 library IEEE;

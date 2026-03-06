@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a200tsbg484-1" LaunchTime="1772690207">
+<GenRun Id="impl_1" LaunchPart="xc7a200tsbg484-1" LaunchTime="1772806812">
   <File Type="PA-TCL" Name="lab2.tcl"/>
   <File Type="REPORTS-TCL" Name="lab2_reports.tcl"/>
   <File Type="INIT-TIMING" Name="lab2_timing_summary_init.rpt"/>
@@ -273,6 +273,13 @@
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/lab2_code_for_cadets_2026/lab2.vhd"/>
         <Attr Name="ImportTime" Val="1770821023"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/flag_register.vhd">
+      <FileInfo SFType="VHDL2008">
+        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>

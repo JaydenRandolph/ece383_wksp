@@ -1,7 +1,7 @@
 ------------------------------------------------------------------------------------------
 -- Lab2 Datapath: Implements hardware for storing samples from the audio codec into BRAM
 --  and then displaying those samples from BRAM via VGA->HDMI.
--- Lt Col James Trimble, 11Feb2025
+-- C2C Jayden Randolph, 05Mar2026
 ------------------------------------------------------------------------------------------
 
 library IEEE;
@@ -99,37 +99,54 @@ begin
 			end if;
 		end if;
 	end process;
-
-    -- Convert Signed sample from Codec into an unsigned value
-    -- Add code here (Look at make_unsigned function)
-    
-    -- Send the unsigned current sample to the BRAM
-    -- Add code here 
-	
-    -- Need logic for the FLAG register
-	-- Add code here
-	
-	
-	--DO THIS AT THE VERY END
-	
-	
 	
     ------------------------------------------------------------------------------
 	-- If a button has been pressed then increment of decrement the trigger time and Volt
-	--    should this be debounced?
-	--  Use a debounced numeric stepper
+	-- 
+	--  Used a debounced numeric stepper
 	------------------------------------------------------------------------------
     
-    -- Add 2 numeric steppers
-    
-    --did this later on in the code. Look at the bottom of this file
+    -- Steppers for time and voltage trigger
+    trigger_t_stepper : numeric_stepper
+      generic map(
+        num_bits  => 11,
+        max_value => 635,
+        min_value => 5,
+        delta => 15
+      )
+      port map(
+        clk     => clk,
+        reset_n => reset_n,             -- active-low synchronous reset
+        en      => '1',                   -- enable
+        up      => btn(RIGHT),             -- increment on rising edge
+        down    => btn(LEFT),           -- decrement on rising edge
+        q       => num_stepper_t   -- signed output
+      );
+        
+    trigger_v_stepper : numeric_stepper
+      generic map(
+        num_bits  => 11,
+        max_value => 430,
+        min_value => 10,
+        delta => 10
+      )
+      port map(
+        clk     => clk,
+        reset_n => reset_n,             -- active-low synchronous reset
+        en      => '1',                   -- enable
+        up      => btn(DOWN),             -- increment on rising edge
+        down    => btn(UP),           -- decrement on rising edge
+        q       => num_stepper_v   -- signed output
+      );
+      
+    -- Assign trigger.t and trigger.v
+    trigger.t <= unsigned(num_stepper_t);
+    trigger.v <= unsigned(num_stepper_v);
 	
 	-------------------------------------------------------------------------------
 	-- Address counter for RAM
-	-- What range of addresses does it need to span?  Should it start at zero or something else?
-	-- How high should it count?  Will it go to its start value on reset or load?
 	-------------------------------------------------------------------------------
-	-- Add code here.  Use a previously built counter.
+	-- Used a previously built counter.
 	count : counter
     generic map(
            num_bits => 10,
@@ -143,7 +160,7 @@ begin
     );
         
     --MUX
-    write_address <= unsigned(exWrAddr) when (exSel = '1') else (writeCntr + 25); --offset of 20
+    write_address <= unsigned(exWrAddr) when (exSel = '1') else (writeCntr + 20); --offset of 20
     
     
 	-------------------------------------------------------------------------------
@@ -152,7 +169,7 @@ begin
 	-- the trigger.  Set the status word to alert the FSM that it should start 
 	-- recording the samples.
 	-------------------------------------------------------------------------------		
-	trig_detect : trigger_detector
+	trig_detect_1 : trigger_detector
     port map (
         clk  => clk,
         reset_n => reset_n,
@@ -162,10 +179,8 @@ begin
         crossed_trigger => sw_trigger
     );
 
-	
-
 	-------------------------------------------------------------------------------
-	-- Instantiate the video driver from Lab1 - should integrate smoothly
+	-- Instantiated the video driver from Lab1
 	-------------------------------------------------------------------------------
 	video_inst: video port map( 
 		clk =>clk,
@@ -179,27 +194,26 @@ begin
 
     ch1.en <= switch(ch1_switch);
     ch2.en <= switch(ch2_switch);
+    
+    -- Audio Codec stuff (switches, component, etc.)
+    is_live <= switch(IS_LIVE_SWITCH);  --  '0' simulate audio; '1' live audio                  
 
--- Audio Codec stuff goes here
-
-is_live <= switch(IS_LIVE_SWITCH);  --  '0' simulate audio; '1' live audio                  
-
-Audio_Codec : Audio_Codec_Wrapper
-    Port map ( clk => clk,
-        reset_n => reset_n, 
-        ac_mclk => ac_mclk,
-        ac_adc_sdata => ac_adc_sdata,
-        ac_dac_sdata => ac_dac_sdata,
-        ac_bclk => ac_bclk,
-        ac_lrclk => ac_lrclk,
-        ready => sw_ready,
-        L_bus_in => ch1.to_ac, -- left channel input to DAC
-        R_bus_in => ch2.to_ac, -- right channel input to DAC
-        L_bus_out => ch1.from_ac, -- left channel output from ADC
-        R_bus_out => ch2.from_ac, -- right channel output from ADC
-        scl => scl,
-        sda => sda,
-        sim_live => is_live);  --  '0' simulate audio; '1' live audio
+    Audio_Codec : Audio_Codec_Wrapper
+        Port map ( clk => clk,
+            reset_n => reset_n, 
+            ac_mclk => ac_mclk,
+            ac_adc_sdata => ac_adc_sdata,
+            ac_dac_sdata => ac_dac_sdata,
+            ac_bclk => ac_bclk,
+            ac_lrclk => ac_lrclk,
+            ready => sw_ready,
+            L_bus_in => ch1.to_ac, -- left channel input to DAC
+            R_bus_in => ch2.to_ac, -- right channel input to DAC
+            L_bus_out => ch1.from_ac, -- left channel output from ADC
+            R_bus_out => ch2.from_ac, -- right channel output from ADC
+            scl => scl,
+            sda => sda,
+            sim_live => is_live);  --  '0' simulate audio; '1' live audio
 
     --sign2Unsign
     ch1.current_sample <= make_unsigned(ch1.incoming_sample);
@@ -210,10 +224,7 @@ Audio_Codec : Audio_Codec_Wrapper
     ch1.to_bram <= exLBus when (exSel = '1') else ch1.current_sample;
     ch2.to_bram <= exRBus when (exSel = '1') else ch2.current_sample;
 
-
-
-    -- BRAM stuff goes here
-
+    -- BRAM stuff
 	reset <= not reset_n;
 	
 	leftChannelMemory : BRAM_SDP_MACRO
@@ -397,53 +408,24 @@ Audio_Codec : Audio_Codec_Wrapper
             WRCLK => clk,                   -- 1-bit input write clock
             WREN => cw_write_en);              -- 1-bit input write port enable
             -- End of BRAM_SDP_MACRO_inst instantiation
+         
+    -- Flag register component. To be used in Lab 3   
+--    flag_reg : flag_register
+--        port map (
+--           clk => clk,
+--           set => sw_ready,
+--           Q => flagQ,
+--           clear => flagClear,
+--           reset_n => reset_n
+--        );
 
--- Add numeric steppers for time and voltage trigger
-trigger_t_stepper : numeric_stepper
-  generic map(
-    num_bits  => 11,
-    max_value => 635,
-    min_value => 5,
-    delta => 15
-  )
-  port map(
-    clk     => clk,
-    reset_n => reset_n,             -- active-low synchronous reset
-    en      => '1',                   -- enable
-    up      => btn(RIGHT),             -- increment on rising edge
-    down    => btn(LEFT),           -- decrement on rising edge
-    q       => num_stepper_t   -- signed output
-  );
-    
-trigger_v_stepper : numeric_stepper
-  generic map(
-    num_bits  => 11,
-    max_value => 430,
-    min_value => 10,
-    delta => 10
-  )
-  port map(
-    clk     => clk,
-    reset_n => reset_n,             -- active-low synchronous reset
-    en      => '1',                   -- enable
-    up      => btn(DOWN),             -- increment on rising edge
-    down    => btn(UP),           -- decrement on rising edge
-    q       => num_stepper_v   -- signed output
-  );
--- Assign trigger.t and trigger.v
-trigger.t <= unsigned(num_stepper_t);
-trigger.v <= unsigned(num_stepper_v);
-
-
+    --sw logic
     sw(0) <= sw_ready;
     sw(1) <= sw_last_address;
     sw(2) <= sw_trigger;
     
-    
-    
+    --cw logic
     cw_counter_control <= cw(1 downto 0);
-    
     cw_write_en <= exWen when exSel = '1' else cw(2);
 
 end lab2_datapath_arch;
-

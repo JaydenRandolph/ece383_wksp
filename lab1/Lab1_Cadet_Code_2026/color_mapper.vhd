@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------
--- Lt Col James Trimble, 16-Jan-2025
+-- C2C Jayden Randolph, 05Mar2026
 -- color_mapper (previously scope face) determines the pixel color value based on the row, column, triggers, and channel inputs 
 ----------------------------------------------------------------------------------
 

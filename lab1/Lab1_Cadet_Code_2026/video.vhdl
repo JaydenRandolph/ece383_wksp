@@ -1,5 +1,5 @@
 -- Structural component to connect clock_wiz, VGA, and DVID
--- by Lt Col James Trimble, 20 Jan 2026
+-- C2C Jayden Randolph, 05Mar2026
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;

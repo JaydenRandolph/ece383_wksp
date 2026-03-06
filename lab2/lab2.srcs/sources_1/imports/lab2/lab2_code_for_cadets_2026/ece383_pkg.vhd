@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------
--- Lt Col James Trimble, 16 Jan 2025
+-- C2C Jayden Randolph, 05Mar2026
 -- This package is designed to house types/records, constants, functions, and components that you want to reuse.
 -- Signals cannot be used here and variables are not recommended.
 ----------------------------------------------------------------------------------
@@ -166,6 +166,16 @@ package ece383_pkg is
         ready            : in  std_logic;
         monitored_signal : in  unsigned;
         crossed_trigger  : out std_logic
+    );
+    end component;
+    
+    component flag_register is
+    port (
+        clk : in STD_LOGIC;
+        set : in STD_LOGIC;
+        Q : out STD_LOGIC;
+        clear : in STD_LOGIC;
+        reset_n : in STD_LOGIC
     );
     end component;
   
