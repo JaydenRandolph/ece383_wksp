@@ -1,0 +1,69 @@
+#-----------------------------------------------------------
+# Vivado v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Wed Mar 11 10:00:43 2026
+# Process ID         : 18424
+# Current directory  : C:/Users/C27Jayden.Randolph/ece383_wksp/ice1/ublaze1
+# Command line       : vivado.exe -gui_launcher_event rodinguilauncherevent43656 C:\Users\C27Jayden.Randolph\ece383_wksp\ice1\ublaze1\ublaze1.xpr
+# Log file           : C:/Users/C27Jayden.Randolph/ece383_wksp/ice1/ublaze1/vivado.log
+# Journal file       : C:/Users/C27Jayden.Randolph/ece383_wksp/ice1/ublaze1\vivado.jou
+# Running On         : C27-5CG3121FS7
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 22631
+# Processor Detail   : AMD Ryzen 7 PRO 6850U with Radeon Graphics     
+# CPU Frequency      : 2695 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 16442 MB
+# Swap memory        : 17179 MB
+# Total Virtual      : 33622 MB
+# Available Virtual  : 12973 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/C27Jayden.Randolph/ece383_wksp/ice1/ublaze1/ublaze1.xpr
+INFO: [Project 1-313] Project file moved from 'C:/Users/C27Jayden.Randolph/ece383_wksp/ublaze1' since last save.
+INFO: [filemgmt 56-1] Board Part Repository Path: Directory not found as 'C:/Users/C27Jayden.Randolph/ece383_wksp/AppData/Roaming/Xilinx/Vivado/2024.2/xhub/board_store/xilinx_board_store'; using path 'C:/Users/C27Jayden.Randolph/AppData/Roaming/Xilinx/Vivado/2024.2/xhub/board_store/xilinx_board_store' instead.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2024.2/data/ip'.
+INFO: [Common 17-41] Interrupt caught. Command should exit soon.
+ERROR: [BD 41-69] Error sourcing TCL script: 
+    while executing
+"namespace eval ::xilinx.com_interface_acemm_1.0 { source -notrace {C:/Xilinx/Vivado/2024.2/data/rsb/busdef/acemm/busdef.tcl} }"
+ERROR: [BD 41-69] Error sourcing TCL script: 
+    while executing
+"source -notrace {C:/Xilinx/Vivado/2024.2/data/rsb/busdef/AXIMM/busdef.tcl} "
+    (in namespace eval "::xilinx.com_interface_aximm_1.0" script line 1)
+    invoked from within
+"namespace eval ::xilinx.com_interface_aximm_1.0 { source -notrace {C:/Xilinx/Vivado/2024.2/data/rsb/busdef/AXIMM/busdef.tcl} }"
+ERROR: [BD 41-69] Error sourcing TCL script: 
+    while executing
+"source -notrace {C:/Xilinx/Vivado/2024.2/data/rsb/busdef/clock_signal/busdef.tcl} "
+    (in namespace eval "::xilinx.com_signal_clock_1.0" script line 1)
+    invoked from within
+"namespace eval ::xilinx.com_signal_clock_1.0 { source -notrace {C:/Xilinx/Vivado/2024.2/data/rsb/busdef/clock_signal/busdef.tcl} }"
+ERROR: [BD 41-69] Error sourcing TCL script: 
+    while executing
+"source -notrace {C:/Xilinx/Vivado/2024.2/data/rsb/busdef/gt_outclk/busdef.tcl} "
+    (in namespace eval "::xilinx.com_signal_gt_outclk_1.0" script line 1)
+    invoked from within
+"namespace eval ::xilinx.com_signal_gt_outclk_1.0 { source -notrace {C:/Xilinx/Vivado/2024.2/data/rsb/busdef/gt_outclk/busdef.tcl} }"
+ERROR: [BD 41-69] Error sourcing TCL script: 
+    while executing
+"source -notrace {C:/Xilinx/Vivado/2024.2/data/rsb/busdef/gt_usrclk/busdef.tcl} "
+    (in namespace eval "::xilinx.com_signal_gt_usrclk_1.0" script line 1)
+    invoked from within
+"namespace eval ::xilinx.com_signal_gt_usrclk_1.0 { source -notrace {C:/Xilinx/Vivado/2024.2/data/rsb/busdef/gt_usrclk/busdef.tcl} }"
+ERROR: [BD 41-69] Error sourcing TCL script: 
+    while executing
+"source -notrace {C:/Xilinx/Vivado/2024.2/data/rsb/busdef/interrupt_signal/busdef.tcl} "
+    (in namespace eval "::xilinx.com_signal_interrupt_1.0" script line 1)
+    invoked from within
+"namespace eval ::xilinx.com_signal_interrupt_1.0 { source -notrace {C:/Xilinx/Vivado/2024.2/data/rsb/busdef/interrupt_signal/busdef.tcl} }"
+INFO: [Common 17-344] 'open_project' was cancelled
+exit
+INFO: [Common 17-206] Exiting Vivado at Wed Mar 11 10:02:07 2026...

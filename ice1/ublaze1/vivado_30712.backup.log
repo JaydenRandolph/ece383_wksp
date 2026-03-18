@@ -1,0 +1,33 @@
+#-----------------------------------------------------------
+# Vivado v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Sat Mar  7 14:52:19 2026
+# Process ID         : 30712
+# Current directory  : C:/Users/C27Jayden.Randolph/ece383_wksp/ublaze1
+# Command line       : vivado.exe -gui_launcher_event rodinguilauncherevent3988 C:\Users\C27Jayden.Randolph\ece383_wksp\ublaze1\ublaze1.xpr
+# Log file           : C:/Users/C27Jayden.Randolph/ece383_wksp/ublaze1/vivado.log
+# Journal file       : C:/Users/C27Jayden.Randolph/ece383_wksp/ublaze1\vivado.jou
+# Running On         : C27-5CG3121FS7
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 22631
+# Processor Detail   : AMD Ryzen 7 PRO 6850U with Radeon Graphics     
+# CPU Frequency      : 2695 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 16442 MB
+# Swap memory        : 17179 MB
+# Total Virtual      : 33622 MB
+# Available Virtual  : 18686 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/C27Jayden.Randolph/ece383_wksp/ublaze1/ublaze1.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2024.2/data/ip'.
+INFO: [Project 1-5579] Found utility IPs instantiated in one or more block designs which have equivalent inline hdl with improved performance and reduced diskspace. It is recommended to migrate these utility IPs to inline hdl using the command upgrade_project -migrate_to_inline_hdl. The utility IPs may be deprecated in future releases. More information on inline hdl is available in UG994.
+open_project: Time (s): cpu = 00:00:12 ; elapsed = 00:00:34 . Memory (MB): peak = 1279.012 ; gain = 217.938
+update_compile_order -fileset sources_1
