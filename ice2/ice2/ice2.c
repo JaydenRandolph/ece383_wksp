@@ -1,8 +1,8 @@
 /*--------------------------------------------------------------------
--- Name:	Maj Jeff Falkinburg
--- Date:	Feb 16, 2017
+-- Name:	C1C Jake Miller and C2C Jayden Randolph
+-- Date:	Mar 18, 2026
 -- File:	lec18.c
--- Event:	Lecture 18
+-- Event:	Lab 3
 -- Crs:	ECE 383
 --
 -- Purp:	MicroBlaze Tutorial that implements a custom IP to microBlaze.

@@ -1,9 +1,9 @@
 /*--------------------------------------------------------------------
--- Name:	Maj Jeff Falkinburg
--- Date:	Feb 19, 2017
--- File:	lec19.c
--- Event:	Lecture 19
--- Crs:		ECE 383
+-- Name:	C1C Jake Miller and C2C Jayden Randolph
+-- Date:	Mar 18, 2026
+-- File:	lec18.c
+-- Event:	Lab 3
+-- Crs:	    ECE 383
 --
 -- Purp:	MicroBlaze Tutorial that implements a custom IP with interrupt
 --			to MicroBlaze.
@@ -18,78 +18,88 @@
 -- another individual is also a violation of the honor code.
 -------------------------------------------------------------------------*/
 /***************************** Include Files ********************************/
-
+ 
 #include "xparameters.h"
 #include "stdio.h"
 #include "xstatus.h"
-
+ 
 #include "platform.h"
 #include "xil_printf.h"						// Contains xil_printf
 #include <xuartlite_l.h>					// Contains XUartLite_RecvByte
 #include <xil_io.h>							// Contains Xil_Out8 and its variations
 #include <xil_exception.h>
-
+ 
 /************************** Constant Definitions ****************************/
+ 
+/*
+* The following constants define the slave registers used for our Counter PCORE
+*/
+#define baseRegister	0x44a00000
+#define voltRegister	baseRegister + (4*9)
+#define LBusOut         baseRegister + (4*4)
+#define RBusOut         baseRegister + (4*5)
+#define flagClear       baseRegister + (4*8)
+
+
 
 /*
- * The following constants define the slave registers used for our Counter PCORE
- */
-#define countBase		0x44a00000
+* Creates array to store audio values
+*/
+int audio[1024][2];
+
+#define countBase	0
 #define countQReg		countBase			// 8 LSBs of slv_reg0 read=Q, write=D
 #define	countCtrlReg	countBase+4			// 2 LSBs of slv_reg1 are control
 #define	countRollReg	countBase+8			// 1 LSBs of slv_reg2 for roll flag
 #define	countClearReg	countBase+0xc		// 1 LSBs of slv_reg3 (0) roll clear flag
 /*
- * The following constants define the Counter commands
- */
+* The following constants define the Counter commands
+*/
 #define count_HOLD		0x00		// The control bits are defined in the VHDL
 #define	count_COUNT		0x01		// code contained in lec18.vhdl.  They are
 #define	count_LOAD		0x02		// added here to centralize the bit values in
 #define count_RESET		0x03		// a single place.
-
+ 
 #define printf xil_printf			/* A smaller footprint printf */
-
+ 
 #define	uartRegAddr			0x40600000		// read <= RX, write => TX
-
+ 
 /************************** Function Prototypes ****************************/
 void myISR(void);
-
+ 
 /************************** Variable Definitions **************************/
 /*
- * The following are declared globally so they are zeroed and so they are
- * easily accessible from a debugger
- */
+* The following are declared globally so they are zeroed and so they are
+* easily accessible from a debugger
+*/
 u16 isrCount = 0;
-
+ 
 int main(void) {
-
+ 
 	unsigned char c;
-
+ 
 	init_platform();
-
+ 
 	print("Welcome to Lecture 19\n\r");
-
+ 
     microblaze_register_handler((XInterruptHandler) myISR, (void *) 0);
     microblaze_enable_interrupts();
-
-    Xil_Out8(countClearReg, 0x01);					// Clear the flag and then you MUST
-	Xil_Out8(countClearReg, 0x00);					// allow the flag to be reset later
-
+ 
     while(1) {
-
+ 
     	c=XUartLite_RecvByte(uartRegAddr);
-
+ 
 		switch(c) {
-
+ 
     		/*-------------------------------------------------
     		 * Reply with the help menu
     		 *-------------------------------------------------
 			 */
     		case '?':
     			printf("--------------------------\r\n");
-    			printf("	count Q = %x\r\n",Xil_In16(countQReg));
+    			printf("	volt trigger = %d\r\n",Xil_In16(voltRegister));
     			printf("	isr count = %x\r\n",isrCount);
-    			printf("	Roll = %x\r\n",Xil_In16(countRollReg));
+    			//printf("	Roll = %x\r\n",Xil_In16(countRollReg));
     			printf("--------------------------\r\n");
     			printf("?: help menu\r\n");
     			printf("o: k\r\n");
@@ -100,7 +110,29 @@ int main(void) {
     			printf("r:   COUNTER	reset counter\r\n");
     			printf("i:   Clear ISR counter\r\n");
     			printf("f:   flush terminal\r\n");
+
+
+                printf("a:   print audio samples\r\n");
+
+
+
     			break;
+ 
+            /*-------------------------------------------------
+			 * When prompted from the user, stores the audio 
+             * samples in an array and prints the array. Samples
+             * stored  in LBusOut and RBusOut registers
+			 *-------------------------------------------------
+			 */
+            case 'a':
+                
+
+                for(int i = 0; i < 1024; i++)
+                    isrCount = 0; //clears flagQ
+                    flagClear = 1; //resets ready flag
+                break;
+
+
 
 			/*-------------------------------------------------
 			 * Basic I/O loopback
@@ -109,7 +141,7 @@ int main(void) {
     		case 'o':
     			printf("k \r\n");
     			break;
-
+ 
 			/*-------------------------------------------------
 			 * Tell the counter to count up
 			 *-------------------------------------------------
@@ -118,7 +150,7 @@ int main(void) {
     			Xil_Out8(countCtrlReg,count_COUNT);
     			Xil_Out8(countCtrlReg,count_HOLD);
     			break;
-
+ 
 			/*-------------------------------------------------
 			 * Start the counter to count up
 			 *-------------------------------------------------
@@ -126,7 +158,7 @@ int main(void) {
         	case 's':
         		Xil_Out8(countCtrlReg,count_COUNT);
         		break;
-
+ 
 			/*-------------------------------------------------
 			 * Stop the counter from counting
 			 *-------------------------------------------------
@@ -134,7 +166,7 @@ int main(void) {
         	case 'S':
         		Xil_Out8(countCtrlReg,count_HOLD);
         		break;
-
+ 
 			/*-------------------------------------------------
 			 * Tell the counter to load a value
 			 *-------------------------------------------------
@@ -146,7 +178,7 @@ int main(void) {
         		Xil_Out8(countCtrlReg,count_LOAD);			// load command
     			printf("%c\r\n",c+0x30);
         		break;
-
+ 
 			/*-------------------------------------------------
 			 * Reset the counter
 			 *-------------------------------------------------
@@ -154,7 +186,7 @@ int main(void) {
             case 'r':
             	Xil_Out8(countCtrlReg,count_RESET);				// reset command
             	break;
-
+ 
 			/*-------------------------------------------------
 			 * Clear the ISR counter
 			 *-------------------------------------------------
@@ -162,7 +194,7 @@ int main(void) {
 			case 'i':
 				isrCount = 0;				// clear ISR Count
 				break;
-
+ 
 			/*-------------------------------------------------
 			 * Clear the terminal window
 			 *-------------------------------------------------
@@ -170,7 +202,7 @@ int main(void) {
             case 'f':
             	for (c=0; c<40; c++) printf("\r\n");
                	break;
-
+ 
 			/*-------------------------------------------------
 			 * Unknown character was
 			 *-------------------------------------------------
@@ -179,17 +211,17 @@ int main(void) {
     			printf("unrecognized character: %c\r\n",c);
     			break;
     	} // end case
-
+ 
     } // end while 1
-
+ 
     cleanup_platform();
-
+ 
     return 0;
 } // end main
-
-
+ 
+ 
 void myISR(void) {
 	isrCount = isrCount + 1;
-	Xil_Out8(countClearReg, 0x01);					// Clear the flag and then you MUST
-	Xil_Out8(countClearReg, 0x00);					// allow the flag to be reset later
+	Xil_Out8(countCtrlReg,count_RESET);
+	Xil_Out8(countCtrlReg,count_HOLD);
 }

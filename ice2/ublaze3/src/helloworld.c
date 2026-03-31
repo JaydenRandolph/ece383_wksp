@@ -1,8 +1,8 @@
 /*--------------------------------------------------------------------
--- Name:	C2C Jayden Randolph
--- Date:	Mar 11, 2026
--- File:	lec19.c
--- Event:	Lecture 19
+-- Name:	Jake Miller and Jayden Randolph
+-- Date:	Mar 18, 2026
+-- File:	lab3.c
+-- Event:	Lab 3
 -- Crs:		ECE 383
 --
 -- Purp:	MicroBlaze Tutorial that implements a custom IP with interrupt
@@ -32,13 +32,24 @@
 /************************** Constant Definitions ****************************/
 
 /*
- * The following constants define the slave registers used for our Counter PCORE
+ * The following constants define the slave registers
  */
-#define countBase		0x44a00000
-#define countQReg		countBase			// 8 LSBs of slv_reg0 read=Q, write=D
-#define	countCtrlReg	countBase+4			// 2 LSBs of slv_reg1 are control
-#define	countRollReg	countBase+8			// 1 LSBs of slv_reg2 for roll flag
-#define	countClearReg	countBase+0xc		// 1 LSBs of slv_reg3 (0) roll clear flag
+#define baseRegister        0x44a00000
+
+
+
+// Write registers
+#define exWrAddr            (baseRegister + (4*1))   // slv_reg1[9:0]
+#define exLbus              (baseRegister + (4*2))   // slv_reg2[15:0]
+#define exRbus              (baseRegister + (4*3))   // slv_reg3[15:0]
+#define exWen               (baseRegister + (4*6))   // slv_reg6[0]
+#define flagClear           (baseRegister + (4*8))   // slv_reg8[0]
+
+// Read registers
+#define L_Bus_Out           (baseRegister + (4*4))   // slv_reg4[15:0]
+#define R_Bus_Out           (baseRegister + (4*5))   // slv_reg5[15:0]
+#define tr_volt             (baseRegister + (4*9))   // slv_reg9[10:0]
+#define tr_time             (baseRegister + (4*10))  // slv_reg10[10:0]
 /*
  * The following constants define the Counter commands
  */
@@ -51,8 +62,15 @@
 
 #define	uartRegAddr			0x40600000		// read <= RX, write => TX
 
+/*
+* Creates array to store audio values
+*/
+int audioLValue[1024];
+int audioRValue[1024];
+
 /************************** Function Prototypes ****************************/
 void myISR(void);
+void isrIncrementer(void);
 
 /************************** Variable Definitions **************************/
 /*
@@ -60,6 +78,16 @@ void myISR(void);
  * easily accessible from a debugger
  */
 u16 isrCount = 0;
+char isFull = 'f';
+
+// example of write Xil_Out8(countCtrlReg,count_RESET);
+/* example of loading from user input and giving command to component through register and control bits:
+ * printf("Enter a 0-9 value to store in the counter: ");
+            	c=XUartLite_RecvByte(uartRegAddr) - 0x30;
+        		Xil_Out8(countQReg,c);						// put value into slv_reg1
+        		Xil_Out8(countCtrlReg,count_LOAD);			// load command
+    			printf("%c\r\n",c+0x30);
+ */
 
 int main(void) {
 
@@ -67,37 +95,125 @@ int main(void) {
 
 	init_platform();
 
-	print("Welcome to Lecture 19\n\r");
+	print("Welcome to Lab 3\n\r");
 
     microblaze_register_handler((XInterruptHandler) myISR, (void *) 0);
     microblaze_enable_interrupts();
+	microblaze_disable_interrupts();
+
+	//enable interrupt, wait for isrCount to increase, disable interrupt
 
     while(1) {
 
     	c=XUartLite_RecvByte(uartRegAddr);
 
 		switch(c) {
-
     		/*-------------------------------------------------
     		 * Reply with the help menu
     		 *-------------------------------------------------
 			 */
     		case '?':
     			printf("--------------------------\r\n");
-    			printf("	count Q = %x\r\n",Xil_In16(countQReg));
-    			printf("	isr count = %x\r\n",isrCount);
-    			printf("	Roll = %x\r\n",Xil_In16(countRollReg));
+    			printf("isr count = %x\r\n",isrCount);
     			printf("--------------------------\r\n");
     			printf("?: help menu\r\n");
+				printf("v: read trigger volt\r\n");
+				printf("t: read trigger time\r\n");
     			printf("o: k\r\n");
-    			printf("c:   COUNTER	count up LEDs (by x26)\r\n");
-    			printf("s/S: COUNTER 	start/Stop counter\r\n");
-    			printf("S:   COUNTER	stop counter\r\n");
-    			printf("l:   COUNTER	load counter\r\n");
-    			printf("r:   COUNTER	reset counter\r\n");
-    			printf("i:   Clear ISR counter\r\n");
-    			printf("f:   flush terminal\r\n");
+    			printf("f: flush terminal\r\n");
+				printf("a: read audio samples\r\n");
+				printf("h: horizontal line\r\n");
     			break;
+
+			/*-------------------------------------------------
+    		 * allow user to print horizontal line to screen
+    		 *-------------------------------------------------
+			 */
+			case 'h':
+				for (int i=0;i<1024;i++) {
+					Xil_Out16(exWrAddr,i); // set BRAM address
+					Xil_Out16(exLbus, (uint16_t)((185 + 36) << 7)); // write to row 185
+					Xil_Out8(exWen, 1); // write data to address in BRAM
+					Xil_Out8(exWen, 0); // turn off write
+            }
+				break;
+
+
+			/*-------------------------------------------------
+    		 * allow user to print volt trigger
+    		 *-------------------------------------------------
+			 */
+			case 'v':
+				printf("volt trigger = %d\r\n",Xil_In16(tr_volt));
+				break;
+
+			/*-------------------------------------------------
+    		 * allow user to print time trigger
+    		 *-------------------------------------------------
+			 */
+			case 't':
+				printf("time trigger = %d\r\n",Xil_In16(tr_time));
+				break;
+
+			/*-------------------------------------------------
+			 * When prompted from the user, stores the audio
+             * samples in an array and prints the array. Samples
+             * stored  in LBusOut and RBusOut registers
+			 *-------------------------------------------------
+			 */
+            case 'a':
+				int trigLLocation;
+				int trigRLocation;
+				int sizeL;
+				int sizeR;
+				int tempAudioL[1024];
+				int tempAudioR[1024];
+				int LCounter;
+				int RCounter;
+				isrIncrementer();
+
+				//checks for trigger. resets array to start there
+				for(int i = 0; i < 1024; i++) {
+					if(audioLValue[i] == tr_volt) {
+						trigLLocation = i;
+						sizeL = 1024 - i;
+					}
+					if(audioRValue[i] == tr_time) {
+						trigRLocation = i;
+						sizeR = 1024 - i;
+					}
+				}
+				LCounter = 0;
+				for(int i = trigLLocation; i < sizeL; i++) {
+					tempAudioL[j] = audioLValue[i];
+					LCounter++;
+				}
+				RCounter = 0;
+				for(int i = trigRLocation; i < sizeR; i++) {
+					tempAudioR[j] = audioRValue[i];
+					RCounter++;
+				}
+				for(int i = 0; i < trigLLocation; i++) {
+					tempAudioL[LCounter] = audioLValue[i];
+					LCounter++;
+				}
+				for(int i = 0; i < trigRLocation; i++) {
+					tempAudioR[RCounter] = audioRValue[i];
+					RCounter++;
+				}
+
+				for (int i=0;i<1024;i++) {
+					Xil_Out16(exWrAddr,i); // set BRAM address
+					Xil_Out16(exLbus, (uint16_t)((tempAudioL[i] + 36) << 7)); // write to row 185
+					Xil_Out16(exRbus, (uint16_t)((tempAudioR[i] + 36) << 7)); // write to row 185
+					Xil_Out8(exWen, 1); // write data to address in BRAM
+					Xil_Out8(exWen, 0); // turn off write
+
+					//prints audiovalue arrays
+					printf("%d, ", tempAudioL[i]);
+					printf("%d\n", tempAudioR[i]);
+            	}
+                break;
 
 			/*-------------------------------------------------
 			 * Basic I/O loopback
@@ -108,56 +224,12 @@ int main(void) {
     			break;
 
 			/*-------------------------------------------------
-			 * Tell the counter to count up
-			 *-------------------------------------------------
-			 */
-    		case 'c':
-    			Xil_Out8(countCtrlReg,count_COUNT);
-    			Xil_Out8(countCtrlReg,count_HOLD);
-    			break;
-
-			/*-------------------------------------------------
-			 * Start the counter to count up
-			 *-------------------------------------------------
-			 */
-        	case 's':
-        		Xil_Out8(countCtrlReg,count_COUNT);
-        		break;
-
-			/*-------------------------------------------------
-			 * Stop the counter from counting
-			 *-------------------------------------------------
-			 */
-        	case 'S':
-        		Xil_Out8(countCtrlReg,count_HOLD);
-        		break;
-
-			/*-------------------------------------------------
-			 * Tell the counter to load a value
-			 *-------------------------------------------------
-			 */
-        	case 'l':
-        		printf("Enter a 0-9 value to store in the counter: ");
-            	c=XUartLite_RecvByte(uartRegAddr) - 0x30;
-        		Xil_Out8(countQReg,c);						// put value into slv_reg1
-        		Xil_Out8(countCtrlReg,count_LOAD);			// load command
-    			printf("%c\r\n",c+0x30);
-        		break;
-
-			/*-------------------------------------------------
-			 * Reset the counter
-			 *-------------------------------------------------
-			 */
-            case 'r':
-            	Xil_Out8(countCtrlReg,count_RESET);				// reset command
-            	break;
-
-			/*-------------------------------------------------
 			 * Clear the ISR counter
 			 *-------------------------------------------------
 			 */
 			case 'i':
 				isrCount = 0;				// clear ISR Count
+				isFull = 'f';
 				break;
 
 			/*-------------------------------------------------
@@ -187,6 +259,21 @@ int main(void) {
 
 void myISR(void) {
 	isrCount = isrCount + 1;
-	Xil_Out8(countCtrlReg,count_RESET);
-	Xil_Out8(countCtrlReg,count_HOLD);
+}
+
+
+
+
+void isrIncrementer(void) {
+int isrTemp = isrCount;
+for(int i = 0; i < 1024; i++) {
+		audioLValue[i] = L_Bus_Out;
+		audioRValue[i] = R_Bus_Out;
+		flagClear = 1;
+		while(isrTemp == isrCount & isFull != 't') {
+			microblaze_enable_interrupts();
+		}
+		microblaze_disable_interrupts();
+	}
+	isFull = 't'
 }

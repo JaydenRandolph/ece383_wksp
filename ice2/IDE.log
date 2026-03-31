@@ -281,3 +281,12 @@ con
 
 15:24:34 INFO  : Launch script is exported to file 'C:\Users\C27Jayden.Randolph\ece383_wksp\ice2\ublaze3_system\_ide\scripts\debugger_ublaze3-default.tcl'
 05:28:49 INFO  : Disconnected from the channel tcfchan#3.
+08:29:18 DEBUG : Logs will be stored at 'C:/Users/C27Jayden.Randolph/ece383_wksp/ice2/IDE.log'.
+08:29:19 INFO  : Launching XSCT server: xsct.bat -n  -interactive C:\Users\C27Jayden.Randolph\ece383_wksp\ice2\temp_xsdb_launch_script.tcl
+08:29:25 INFO  : Registering command handlers for Vitis TCF services
+08:29:25 INFO  : Platform repository initialization has completed.
+08:29:27 INFO  : XSCT server has started successfully.
+08:29:27 INFO  : plnx-install-location is set to ''
+08:29:39 INFO  : Successfully done setting XSCT server connection channel  
+08:29:39 INFO  : Successfully done query RDI_DATADIR 
+08:29:39 INFO  : Successfully done setting workspace for the tool. 
