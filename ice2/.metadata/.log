@@ -4685,3 +4685,42 @@ org.eclipse.core.runtime.CoreException: Cannot determine URI for '/ublaze2/src/h
 
 !ENTRY org.eclipse.launchbar.core 2 0 2026-03-31 08:43:42.535
 !MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+!SESSION 2026-04-01 10:12:46.219 -----------------------------------------------
+eclipse.buildId=2024.2
+java.version=11.0.16.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -data C:\Users\C27Jayden.Randolph\ece383_wksp\ice2
+
+!ENTRY org.eclipse.ui 4 4 2026-04-01 10:12:53.935
+!MESSAGE Plug-in 'org.eclipse.ui.editors' contributed an invalid Menu Extension (Path: 'navigate' is invalid): org.eclipse.ui.edit.text.gotoLastEditPosition
+
+!ENTRY com.xilinx.sdk.utils 0 0 2026-04-01 10:13:02.384
+!MESSAGE XSCT Command: [plnx-install-path  ; ::scw::scw_mode gui], Thread: Thread-9
+
+!ENTRY com.xilinx.sdk.utils 0 0 2026-04-01 10:13:02.384
+!MESSAGE XSCT Command: [set sdk::sdk_chan tcfchan#0], Thread: Thread-21
+
+!ENTRY com.xilinx.sdk.utils 0 0 2026-04-01 10:13:02.411
+!MESSAGE XSCT command with result: [plnx-install-path  ; ::scw::scw_mode gui], Result: [null, ]. Thread: Thread-9
+
+!ENTRY com.xilinx.sdk.utils 0 0 2026-04-01 10:13:02.412
+!MESSAGE XSCT command with result: [set sdk::sdk_chan tcfchan#0], Result: [null, tcfchan#0]. Thread: Thread-21
+
+!ENTRY com.xilinx.sdk.utils 0 0 2026-04-01 10:13:02.413
+!MESSAGE XSCT Command: [setws C:/Users/C27Jayden.Randolph/ece383_wksp/ice2], Thread: Thread-21
+
+!ENTRY com.xilinx.sdk.utils 0 0 2026-04-01 10:13:02.415
+!MESSAGE XSCT command with result: [setws C:/Users/C27Jayden.Randolph/ece383_wksp/ice2], Result: [null, ]. Thread: Thread-21
+
+!ENTRY com.xilinx.sdk.utils 0 0 2026-04-01 10:13:03.026
+!MESSAGE XSCT Command: [::hsi::utils::init_repo], Thread: Worker-1: Initializing s/w repositories
+
+!ENTRY com.xilinx.sdk.utils 0 0 2026-04-01 10:13:03.739
+!MESSAGE XSCT command with result: [::hsi::utils::init_repo], Result: [null, ]. Thread: Worker-1: Initializing s/w repositories
+
+!ENTRY com.xilinx.sdk.utils 0 0 2026-04-01 10:13:03.740
+!MESSAGE XSCT Command: [set query_var1 $::env(RDI_DATADIR)], Thread: Worker-1: Initializing s/w repositories
+
+!ENTRY com.xilinx.sdk.utils 0 0 2026-04-01 10:13:03.741
+!MESSAGE XSCT command with result: [set query_var1 $::env(RDI_DATADIR)], Result: [null, C:/Xilinx/Vitis/2024.2/data]. Thread: Worker-1: Initializing s/w repositories
