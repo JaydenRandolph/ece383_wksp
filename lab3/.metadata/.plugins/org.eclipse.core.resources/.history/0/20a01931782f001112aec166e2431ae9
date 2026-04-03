@@ -249,7 +249,7 @@ int main(void) {
              *-------------------------------------------------
              */
             default:
-                printf("unrecognized character: %c\r\n",c);
+                //printf("unrecognized character: %c\r\n",c);
                 break;
         } // end case
 
@@ -282,14 +282,17 @@ void myISR(void) {
 void isrArrayCreator(void) {
     int trigLocation = 0;
     int trigfound = 0;
+//    int storingL[1024];
+//    int storingR[1024];
 
     int triggerVolt = Xil_In16(tr_volt);
     int triggerTime = Xil_In16(tr_time);
 
-    // Find trigger event by voltage crossing / match
+//
+//    // Find trigger event by voltage crossing / match
     for (int i = triggerTime; i < 1023; i++) {
         if (tempAudioLValue[i+1] >= triggerVolt && tempAudioLValue[i] < triggerVolt) {
-        	//printf("entered Trig\n\r"); //for debugging
+        	//printf("entered Trig\n\r");
             trigLocation = i;
             trigfound = 1;
             break;
@@ -313,5 +316,5 @@ void isrArrayCreator(void) {
 		}
 		trigfound = 0;
     }
-    //printf("isrArrayCreator finished\n"); //for debugging
+    //printf("isrArrayCreator finished\n");
 }
