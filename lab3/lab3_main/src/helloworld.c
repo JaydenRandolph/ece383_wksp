@@ -1,14 +1,14 @@
 /*--------------------------------------------------------------------
--- Name:	Jake Miller and Jayden Randolph
--- Date:	Mar 18, 2026
--- File:	lab3.c
--- Event:	Lab 3
--- Crs:		ECE 383
+-- Name:    Jake Miller and Jayden Randolph
+-- Date:    Mar 18, 2026
+-- File:    lab3.c
+-- Event:   Lab 3
+-- Crs:     ECE 383
 --
--- Purp:	MicroBlaze Tutorial that implements a custom IP with interrupt
---			to MicroBlaze.
+-- Purp:    MicroBlaze Tutorial that implements a custom IP with interrupt
+--          to MicroBlaze.
 --
--- Documentation:	MicroBlaze Tutorial
+-- Documentation:   MicroBlaze Tutorial
 --
 -- Academic Integrity Statement: I certify that, while others may have
 -- assisted me in brain storming, debugging and validating this program,
@@ -24,9 +24,9 @@
 #include "xstatus.h"
 
 #include "platform.h"
-#include "xil_printf.h"						// Contains xil_printf
-#include <xuartlite_l.h>					// Contains XUartLite_RecvByte
-#include <xil_io.h>							// Contains Xil_Out8 and its variations
+#include "xil_printf.h"                     // Contains xil_printf
+#include <xuartlite_l.h>                    // Contains XUartLite_RecvByte
+#include <xil_io.h>                         // Contains Xil_Out8 and its variations
 #include <xil_exception.h>
 
 /************************** Constant Definitions ****************************/
@@ -52,14 +52,14 @@
 /*
 * The following constants define the Counter commands
 */
-#define count_HOLD		0x00		// The control bits are defined in the VHDL
-#define	count_COUNT		0x01		// code contained in lec18.vhdl.  They are
-#define	count_LOAD		0x02		// added here to centralize the bit values in
-#define count_RESET		0x03		// a single place.
+#define count_HOLD      0x00        // The control bits are defined in the VHDL
+#define count_COUNT     0x01        // code contained in lec18.vhdl.  They are
+#define count_LOAD      0x02        // added here to centralize the bit values in
+#define count_RESET     0x03        // a single place.
 
-#define printf xil_printf			/* A smaller footprint printf */
+#define printf xil_printf           /* A smaller footprint printf */
 
-#define	uartRegAddr			0x40600000		// read <= RX, write => TX
+#define uartRegAddr         0x40600000      // read <= RX, write => TX
 
 /*
 * Creates array to store audio values
@@ -71,7 +71,7 @@ int tempAudioRValue[1024];
 
 /************************** Function Prototypes ****************************/
 void myISR(void);
-int isrArrayFinder(void);
+void isrArrayCreator(void);
 
 /************************** Variable Definitions **************************/
 /*
@@ -85,237 +85,182 @@ int arrayValue;
 // example of write Xil_Out8(countCtrlReg,count_RESET);
 /* example of loading from user input and giving command to component through register and control bits:
 * printf("Enter a 0-9 value to store in the counter: ");
-            	c=XUartLite_RecvByte(uartRegAddr) - 0x30;
-        		Xil_Out8(countQReg,c);						// put value into slv_reg1
-        		Xil_Out8(countCtrlReg,count_LOAD);			// load command
-    			printf("%c\r\n",c+0x30);
+                c=XUartLite_RecvByte(uartRegAddr) - 0x30;
+                Xil_Out8(countQReg,c);                      // put value into slv_reg1
+                Xil_Out8(countCtrlReg,count_LOAD);          // load command
+                printf("%c\r\n",c+0x30);
 */
 
 int main(void) {
 
-	unsigned char c;
+    unsigned char c;
 
-	init_platform();
+    init_platform();
 
-	print("Welcome to Lab 3\n\r");
+    print("Welcome to Lab 3\n\r");
 
     microblaze_register_handler((XInterruptHandler) myISR, (void *) 0);
     microblaze_enable_interrupts();
-	microblaze_disable_interrupts();
-
-	//enable interrupt, wait for isrCount to increase, disable interrupt
 
     while(1) {
 
-    	c=XUartLite_RecvByte(uartRegAddr);
+        c=XUartLite_RecvByte(uartRegAddr);
 
 
-		switch(c) {
-    		/*-------------------------------------------------
-    		 * Reply with the help menu
-    		 *-------------------------------------------------
-			 */
-    		case '?':
-    			printf("--------------------------\r\n");
-    			printf("isr count = %x\r\n",isrCount);
-    			printf("--------------------------\r\n");
-    			printf("?: help menu\r\n");
-				printf("v: read trigger volt\r\n");
-				printf("t: read trigger time\r\n");
-    			printf("o: k\r\n");
-    			printf("f: flush terminal\r\n");
-				printf("a: read audio samples\r\n");
-				printf("h: horizontal line\r\n");
-    			break;
+        switch(c) {
+            /*-------------------------------------------------
+             * Reply with the help menu
+             *-------------------------------------------------
+             */
+            case '?':
+                printf("--------------------------\r\n");
+                printf("isr count = %x\r\n",isrCount);
+                printf("--------------------------\r\n");
+                printf("?: help menu\r\n");
+                printf("v: read trigger volt\r\n");
+                printf("t: read trigger time\r\n");
+                printf("o: k\r\n");
+                printf("f: flush terminal\r\n");
+                printf("a: read audio samples\r\n");
+                printf("h: horizontal line\r\n");
+                break;
 
-			/*-------------------------------------------------
-    		 * allow user to print horizontal line to screen
-    		 *-------------------------------------------------
-			 */
-			case 'h':
-				for (int i=0;i<1024;i++) {
-					Xil_Out16(exWrAddr,i); // set BRAM address
-					Xil_Out16(exLbus, (uint16_t)((185 + 36) << 7)); // write to row 185
-					Xil_Out8(exWen, 1); // write data to address in BRAM
-					Xil_Out8(exWen, 0); // turn off write
+            /*-------------------------------------------------
+             * allow user to print horizontal line to screen
+             *-------------------------------------------------
+             */
+            case 'h':
+                for (int i=0;i<1024;i++) {
+                    Xil_Out16(exWrAddr,i); // set BRAM address
+                    Xil_Out16(exLbus, (uint16_t)((185 + 36) << 7)); // write to row 185
+                    Xil_Out8(exWen, 1); // write data to address in BRAM
+                    Xil_Out8(exWen, 0); // turn off write
             }
-				break;
+                break;
 
 
-			/*-------------------------------------------------
-    		 * allow user to print volt trigger
-    		 *-------------------------------------------------
-			 */
-			case 'v':
-				printf("volt trigger = %d\r\n",Xil_In16(tr_volt));
-				break;
+            /*-------------------------------------------------
+             * allow user to print volt trigger
+             *-------------------------------------------------
+             */
+            case 'v':
+                printf("volt trigger = %d\r\n",Xil_In16(tr_volt));
+                break;
 
-			/*-------------------------------------------------
-    		 * allow user to print time trigger
-    		 *-------------------------------------------------
-			 */
-			case 't':
-				printf("time trigger = %d\r\n",Xil_In16(tr_time));
-				break;
-			/*-------------------------------------------------
-			 * When prompted from the user, stores the audio
+            /*-------------------------------------------------
+             * allow user to print time trigger
+             *-------------------------------------------------
+             */
+            case 't':
+                printf("time trigger = %d\r\n",Xil_In16(tr_time));
+                break;
+            /*-------------------------------------------------
+             * When prompted from the user, stores the audio
              * samples in an array and prints the array. Samples
              * stored  in LBusOut and RBusOut registers
-			 *-------------------------------------------------
-			 */
+             *-------------------------------------------------
+             */
             case 'a':
-				int trigLLocation = 0;
-				int trigRLocation = 0;
-				int tempAudioL[1024];
-				int tempAudioR[1024];
-				int LCounter = 0;
-				int RCounter = 0;
+            	while(1) {
+                    if(ARRAY_FULL == 1) {
+                    	//printf("Calling isrArrayCreator\n");
+                        isrArrayCreator();
+                        isrCount = 0;
+                        ARRAY_FULL = 0;
+                    }
+            	}
 
-				int triggerVolt = Xil_In16(tr_volt);
-				int triggerTime = Xil_In16(tr_time);
+            /*-------------------------------------------------
+             * Test case for reading audio samples
+             *-------------------------------------------------
+             */
+            case 's': {
+                printf("Starting simple audio test...\r\n");
 
-				ARRAY_FULL = 0;
+                int tempL[1024];
+                int tempR[1024];
 
-				// Find trigger event by voltage crossing / match
-				for (int i = 0; i < 1024; i++) {
-					if (audioLValue[i] >= triggerVolt) {
-						trigLLocation = i;
-						break;
-					}
-				}
+                ARRAY_FULL = 0;
 
-				for (int i = 0; i < 1024; i++) {
-					if (audioRValue[i] >= triggerTime) {
-						trigRLocation = i;
-						break;
-					}
-				}
+                // Collect samples
+                for (int i = 0; i < 1024; i++) {
 
-				// Reorder left buffer so trigger starts at index 0
-				for (int i = trigLLocation; i < 1024; i++) {
-					tempAudioL[LCounter++] = audioLValue[i];
-				}
-				for (int i = 0; i < trigLLocation; i++) {
-					tempAudioL[LCounter++] = audioLValue[i];
-				}
+                    int isrTemp = isrCount;
 
-				// Reorder right buffer
-				for (int i = trigRLocation; i < 1024; i++) {
-					tempAudioR[RCounter++] = audioRValue[i];
-				}
-				for (int i = 0; i < trigRLocation; i++) {
-					tempAudioR[RCounter++] = audioRValue[i];
-				}
+                    // Read audio sample from hardware
+                    tempL[i] = Xil_In16(L_Bus_Out);
+                    tempR[i] = Xil_In16(R_Bus_Out);
 
-				// Write reordered samples to display memory
-				for (int i = 0; i < 1024; i++) {
-					Xil_Out16(exWrAddr, i);
-					Xil_Out16(exLbus, (u16)((tempAudioL[i] + 36) << 7));
-					Xil_Out16(exRbus, (u16)((tempAudioR[i] + 36) << 7));
-					Xil_Out8(exWen, 1);
-					Xil_Out8(exWen, 0);
+                    // Clear ready flag (IMPORTANT)
+                    Xil_Out8(flagClear, 1);
+                    Xil_Out8(flagClear, 0);
 
-					printf("%x, %x\r\n", tempAudioL[i], tempAudioR[i]);
-				}
-				break;
+                    // Wait for next sample (interrupt-driven)
+                    microblaze_enable_interrupts();
+                    while (isrTemp == isrCount) {
+                        ; // wait
+                    }
+                    microblaze_disable_interrupts();
 
-			/*-------------------------------------------------
-			 * Test case for reading audio samples
-			 *-------------------------------------------------
-			 */
-			case 's': {
-				printf("Starting simple audio test...\r\n");
+                    // Print a few samples (not all or terminal will explode)
+                    if (i < 100) {
+                        printf("Sample %d: L=%d, R=%d\r\n", i, tempL[i], tempR[i]);
+                    }
+                }
 
-				int tempL[1024];
-				int tempR[1024];
+                printf("Finished sampling.\r\n");
 
-				ARRAY_FULL = 0;
+                // Now send to display (oscilloscope BRAM)
+                for (int i = 0; i < 1024; i++) {
 
-				// Collect samples
-				for (int i = 0; i < 1024; i++) {
+                    Xil_Out16(exWrAddr, i);
 
-					int isrTemp = isrCount;
+                    // Shift/scale like your lab2 mapping
+                    Xil_Out16(exLbus, (u16)((tempL[i] + 36) << 7));
+                    Xil_Out16(exRbus, (u16)((tempR[i] + 36) << 7));
 
-					// Read audio sample from hardware
-					tempL[i] = Xil_In16(L_Bus_Out);
-					tempR[i] = Xil_In16(R_Bus_Out);
+                    Xil_Out8(exWen, 1);
+                    Xil_Out8(exWen, 0);
+                }
 
-					// Clear ready flag (IMPORTANT)
-					Xil_Out8(flagClear, 1);
-					Xil_Out8(flagClear, 0);
+                printf("Display updated.\r\n");
 
-					// Wait for next sample (interrupt-driven)
-					microblaze_enable_interrupts();
-					while (isrTemp == isrCount) {
-						; // wait
-					}
-					microblaze_disable_interrupts();
+                break;
+            }
 
-					// Print a few samples (not all or terminal will explode)
-					if (i < 100) {
-						printf("Sample %d: L=%d, R=%d\r\n", i, tempL[i], tempR[i]);
-					}
-				}
+            /*-------------------------------------------------
+             * Basic I/O loopback
+             *-------------------------------------------------
+             */
+            case 'o':
+                printf("k \r\n");
+                break;
 
-				printf("Finished sampling.\r\n");
+            /*-------------------------------------------------
+             * Clear the ISR counter
+             *-------------------------------------------------
+             */
+            case 'i':
+                isrCount = 0;               // clear ISR Count
+                ARRAY_FULL = 0;
+                break;
 
-				// Now send to display (oscilloscope BRAM)
-				for (int i = 0; i < 1024; i++) {
-
-					Xil_Out16(exWrAddr, i);
-
-					// Shift/scale like your lab2 mapping
-					Xil_Out16(exLbus, (u16)((tempL[i] + 36) << 7));
-					Xil_Out16(exRbus, (u16)((tempR[i] + 36) << 7));
-
-					Xil_Out8(exWen, 1);
-					Xil_Out8(exWen, 0);
-				}
-
-				printf("Display updated.\r\n");
-
-				break;
-			}
-
-			/*-------------------------------------------------
-			 * Basic I/O loopback
-			 *-------------------------------------------------
-			 */
-    		case 'o':
-    			printf("k \r\n");
-    			break;
-
-			/*-------------------------------------------------
-			 * Clear the ISR counter
-			 *-------------------------------------------------
-			 */
-			case 'i':
-				isrCount = 0;				// clear ISR Count
-				ARRAY_FULL = 0;
-				break;
-
-			/*-------------------------------------------------
-			 * Clear the terminal window
-			 *-------------------------------------------------
-			 */
+            /*-------------------------------------------------
+             * Clear the terminal window
+             *-------------------------------------------------
+             */
             case 'f':
-            	for (c=0; c<40; c++) printf("\r\n");
-               	break;
+                for (c=0; c<40; c++) printf("\r\n");
+                break;
 
-			/*-------------------------------------------------
-			 * Unknown character was
-			 *-------------------------------------------------
-			 */
-    		default:
-    			printf("unrecognized character: %c\r\n",c);
-    			break;
-    	} // end case
-
-	    if(ARRAY_FULL == 1) {
-	    	arrayValue = isrArrayFinder();
-	    	isrArrayCreator(arrayValue);
-	    	ARRAY_FULL = 0;
-	    }
+            /*-------------------------------------------------
+             * Unknown character was
+             *-------------------------------------------------
+             */
+            default:
+                //printf("unrecognized character: %c\r\n",c);
+                break;
+        } // end case
 
     } // end while 1
 
@@ -326,69 +271,59 @@ int main(void) {
 
 
 void myISR(void) {
-	//clearing (flag)
-	Xil_Out8(flagClear, 1); //sets flagClear = 1. then immediately pulses it back to 0
-	Xil_Out8(flagClear, 0);
+    //clearing (flag)
+    Xil_Out8(flagClear, 1); //sets flagClear = 1. then immediately pulses it back to 0
+    Xil_Out8(flagClear, 0);
 
-	if(isrCount == 1023) {
-		microblaze_disable_interrupts();
-		ARRAY_FULL = 1;
-		isrCount = 0;
-	}
-	else {
-		//microblaze_enable_interrupts();
-		isrCount = isrCount + 1;
-	}
+    if(isrCount >= 1023) {
+    	//printf("Array Full\n"); //for debugging
+        ARRAY_FULL = 1;
+
+    }
+    if (!ARRAY_FULL) {
+        tempAudioLValue[isrCount] = ((Xil_In16(L_Bus_Out)) >> 7) - 36;
+        tempAudioRValue[isrCount] = ((Xil_In16(R_Bus_Out)) >> 7) - 36;
+        //printf("Sample %d: L=%d, R=%d\r\n", isrCount, tempAudioLValue[isrCount], tempAudioRValue[isrCount]); //for debugging
+        isrCount = isrCount + 1;
+    }
 }
 
-int isrArrayFinder(void) {
-	int trigLLocation = 0;
-	int trigRLocation = 0;
-	int tempAudioL[1024];
-	int tempAudioR[1024];
-	int LCounter = 0;
-	int RCounter = 0;
+void isrArrayCreator(void) {
+    int trigLocation = 0;
+    int trigfound = 0;
+//    int storingL[1024];
+//    int storingR[1024];
 
-	int triggerVolt = Xil_In16(tr_volt);
-	int triggerTime = Xil_In16(tr_time);
+    int triggerVolt = Xil_In16(tr_volt);
+    int triggerTime = Xil_In16(tr_time);
 
-	// Find trigger event by voltage crossing / match
-	for (int i = 0; i < 1024; i++) {
-		if (audioLValue[i] >= triggerVolt) {
-			trigLLocation = i;
-			break;
+//
+//    // Find trigger event by voltage crossing / match
+    for (int i = triggerTime; i < 1023; i++) {
+        if (tempAudioLValue[i+1] >= triggerVolt && tempAudioLValue[i] < triggerVolt) {
+        	//printf("entered Trig\n\r");
+            trigLocation = i;
+            trigfound = 1;
+            break;
+        }
+    }
+
+    if((((trigLocation-triggerTime) + 620) > 1023) || ((trigLocation-triggerTime) + 620) < 0){
+    	trigfound = 0;
+    }
+
+    // Write reordered samples to display memory
+    if (trigfound == 1){
+    	int j = 0;
+		for (int i = trigLocation-triggerTime; i < (trigLocation-triggerTime) + 620; i++) {
+			Xil_Out16(exWrAddr, j);
+			Xil_Out16(exLbus, (u16)((tempAudioLValue[i] + 36) << 7));
+			Xil_Out16(exRbus, (u16)((tempAudioRValue[i] + 36) << 7));
+			Xil_Out8(exWen, 1);
+			Xil_Out8(exWen, 0);
+			j++;
 		}
-	}
-
-	for (int i = 0; i < 1024; i++) {
-		if (audioRValue[i] >= triggerTime) {
-			trigRLocation = i;
-			break;
-		}
-	}
-
-	// Reorder left buffer so trigger starts at index 0
-	for (int i = trigLLocation; i < 1024; i++) {
-		tempAudioL[LCounter++] = audioLValue[i];
-	}
-	for (int i = 0; i < trigLLocation; i++) {
-		tempAudioL[LCounter++] = audioLValue[i];
-	}
-
-	// Reorder right buffer
-	for (int i = trigRLocation; i < 1024; i++) {
-		tempAudioR[RCounter++] = audioRValue[i];
-	}
-	for (int i = 0; i < trigRLocation; i++) {
-		tempAudioR[RCounter++] = audioRValue[i];
-	}
-
-	// Write reordered samples to display memory
-	for (int i = 0; i < 1024; i++) {
-		Xil_Out16(exWrAddr, i);
-		Xil_Out16(exLbus, (u16)((tempAudioL[i] + 36) << 7));
-		Xil_Out16(exRbus, (u16)((tempAudioR[i] + 36) << 7));
-		Xil_Out8(exWen, 1);
-		Xil_Out8(exWen, 0);
+		trigfound = 0;
+    }
+    //printf("isrArrayCreator finished\n");
 }
-

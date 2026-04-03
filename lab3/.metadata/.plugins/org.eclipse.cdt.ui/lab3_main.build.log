@@ -1,6 +1,21 @@
-13:08:16 **** Incremental Build of configuration Debug for project lab3_main ****
+15:14:45 **** Incremental Build of configuration Debug for project lab3_main ****
 make all 
-make: Nothing to be done for 'all'.
+'Building file: ../src/helloworld.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -IC:/Users/C27Jayden.Randolph/ece383_wksp/lab3/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_microblaze_0/bspinclude/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: lab3_main.elf'
+'Invoking: MicroBlaze gcc linker'
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -LC:/Users/C27Jayden.Randolph/ece383_wksp/lab3/design_1_wrapper/export/design_1_wrapper/sw/design_1_wrapper/standalone_microblaze_0/bsplib/lib -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "lab3_main.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: lab3_main.elf'
+' '
+'Invoking: MicroBlaze Print Size'
+mb-size lab3_main.elf  |tee "lab3_main.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9048	     24	  57704	  66776	  104d8	lab3_main.elf
+'Finished building: lab3_main.elf.size'
+' '
 
-13:08:17 Build Finished (took 275ms)
+15:14:50 Build Finished (took 4s.789ms)
 
