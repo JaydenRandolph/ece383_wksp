@@ -1,0 +1,311 @@
+#-----------------------------------------------------------
+# Vivado v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Mon Apr  6 07:39:22 2026
+# Process ID         : 82088
+# Current directory  : C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code
+# Command line       : vivado.exe -gui_launcher_event rodinguilauncherevent79780 C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.xpr
+# Log file           : C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/vivado.log
+# Journal file       : C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code\vivado.jou
+# Running On         : C27-5CG3121FS7
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 22631
+# Processor Detail   : AMD Ryzen 7 PRO 6850U with Radeon Graphics     
+# CPU Frequency      : 2695 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 16442 MB
+# Swap memory        : 15569 MB
+# Total Virtual      : 32011 MB
+# Available Virtual  : 8466 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.xpr
+INFO: [Project 1-313] Project file moved from 'C:/383/ece383-lab4' since last save.
+WARNING: [filemgmt 56-2] Board Part Repository Path: Could not find the directory 'C:/Users/C27Jayden.Randolph/ece383_wksp/Users/jimmi/AppData/Roaming/Xilinx/Vivado/2024.2/xhub/board_store/xilinx_board_store', nor could it be found using path 'C:/Users/jimmi/AppData/Roaming/Xilinx/Vivado/2024.2/xhub/board_store/xilinx_board_store'.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2024.2/data/ip'.
+open_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:09 . Memory (MB): peak = 1134.234 ; gain = 91.438
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+ERROR: [Common 17-180] Spawn failed: No error
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+ERROR: [Common 17-180] Spawn failed: No error
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+reset_run synth_1
+INFO: [Project 1-1161] Replacing file C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.srcs/utils_1/imports/synth_1/Lab4.dcp with file C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.runs/synth_1/Lab4.dcp
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+[Mon Apr  6 08:25:44 2026] Launched synth_1...
+Run output will be captured here: C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.runs/synth_1/runme.log
+[Mon Apr  6 08:25:44 2026] Launched impl_1...
+Run output will be captured here: C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.runs/impl_1/runme.log
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4_cu.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4_cu.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4_cu.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4_cu.vhd:]
+reset_run synth_1
+ERROR: [Common 17-180] Spawn failed: No error
+ERROR: [Common 17-180] Spawn failed: No error
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+[Mon Apr  6 08:29:38 2026] Launched synth_1...
+Run output will be captured here: C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.runs/synth_1/runme.log
+[Mon Apr  6 08:29:38 2026] Launched impl_1...
+Run output will be captured here: C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.runs/impl_1/runme.log
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4_cu.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4_cu.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4_cu.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4_cu.vhd:]
+ERROR: [Common 17-180] Spawn failed: No error
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4_cu.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\LookupTable.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Lab4.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Jayden.Randolph\ece383_wksp\lab4\Lab04_cadet_code\Lab4.srcs\sources_1\imports\ece383-lab4\Interpolate.vhd:]
+ERROR: [Common 17-180] Spawn failed: No error
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+[Mon Apr  6 08:30:25 2026] Launched synth_1...
+Run output will be captured here: C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.runs/synth_1/runme.log
+[Mon Apr  6 08:30:25 2026] Launched impl_1...
+Run output will be captured here: C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.runs/impl_1/runme.log
+launch_simulation -simset [get_filesets Lab4_dp ]
+Command: launch_simulation  -simset Lab4_dp
+INFO: [Vivado 12-12493] Simulation top is 'Lab4_dp_tb'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5698] Checking validity of IPs in the design for the 'XSim' simulator...
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.sim/Lab4_dp/behav/xsim'
+INFO: [Vivado 12-4795] Using compiled simulation libraries for IPs
+INFO: [SIM-utils-51] Simulation object is 'Lab4_dp'
+INFO: [SIM-utils-72] Using boost library from 'C:/Xilinx/Vivado/2024.2/tps/boost_1_72_0'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'C:/Xilinx/Vivado/2024.2/data/xsim/xsim.ini' copied to run dir:'C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.sim/Lab4_dp/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'Lab4_dp_tb' in fileset 'Lab4_dp'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-100] Fetching design files from 'sources_1'...(this may take a while)...
+INFO: [USF-XSim-101] Fetching design files from 'Lab4_dp'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.sim/Lab4_dp/behav/xsim'
+"xvlog --incr --relax -prj Lab4_dp_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.srcs/sources_1/imports/lab2_code_for_cadets/audio_init.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module audio_init
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.sim/Lab4_dp/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+"xvhdl --incr --relax -prj Lab4_dp_tb_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_sim_netlist.vhdl" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'clk_wiz_0_clk_wiz'
+INFO: [VRFC 10-3107] analyzing entity 'clk_wiz_0'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.srcs/sources_1/imports/ece383-lab4/Amplify.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'Amplify'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.srcs/sources_1/imports/ece383-lab4/BaseAndNextReg.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'BaseAndNextReg'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.srcs/sources_1/imports/ece383-lab4/IndexOffsetReg.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'IndexOffsetReg'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.srcs/sources_1/imports/ece383-lab4/Interpolate.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'Interpolate'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.srcs/sources_1/imports/ece383-lab4/Lab4_cu.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'Lab4_cu'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.srcs/sources_1/imports/ece383-lab4/Lab4_dp.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'Lab4_dp'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.srcs/sources_1/imports/ece383-lab4/LookupTable.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'LookupTable'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.srcs/sources_1/imports/ece383-lab4/ResultReg.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'ResultReg'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.srcs/sources_1/imports/ece383-lab4/Lab4.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'Lab4'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.srcs/sources_1/imports/lab2_code_for_cadets/Audio_Codec_Wrapper.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'Audio_Codec_Wrapper'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.srcs/sources_1/imports/lab2_code_for_cadets/i2s_ctl.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'i2s_ctl'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.srcs/sources_1/imports/lab2_code_for_cadets/TWICtl.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'TWICtl'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.srcs/sim_1/new/Lab4_dp_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'Lab4_dp_tb'
+run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:09 . Memory (MB): peak = 1185.676 ; gain = 0.000
+INFO: [USF-XSim-69] 'compile' step finished in '9' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.sim/Lab4_dp/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot Lab4_dp_tb_behav xil_defaultlib.Lab4_dp_tb xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator v2024.2.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2024.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot Lab4_dp_tb_behav xil_defaultlib.Lab4_dp_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package unisim.vcomponents
+Compiling package unimacro.vcomponents
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_signed
+Compiling package ieee.std_logic_textio
+Compiling package ieee.vital_timing
+Compiling package ieee.vital_primitives
+Compiling package unisim.vpkg
+Compiling module xil_defaultlib.glbl
+Compiling architecture indexoffsetreg_arch of entity xil_defaultlib.IndexOffsetReg [\IndexOffsetReg(whole_bits=8,fra...]
+Compiling architecture rb18_internal_vhdl_v of entity unisim.RB18_INTERNAL_VHDL [\RB18_INTERNAL_VHDL(bram_size=18...]
+Compiling architecture ramb18e1_v of entity unisim.RAMB18E1 [\RAMB18E1(init_00="1000101111000...]
+Compiling architecture bram_v of entity unimacro.BRAM_SDP_MACRO [\BRAM_SDP_MACRO(device="7SERIES"...]
+Compiling architecture lookuptable_arch of entity xil_defaultlib.LookupTable [\LookupTable(whole_bits=8,frac_b...]
+Compiling architecture baseandnextreg_arch of entity xil_defaultlib.BaseAndNextReg [baseandnextreg_default]
+Compiling architecture interpolate_arch of entity xil_defaultlib.Interpolate [\Interpolate(whole_bits=8,frac_b...]
+Compiling architecture amplify_arch of entity xil_defaultlib.Amplify [amplify_default]
+Compiling architecture resultreg_arch of entity xil_defaultlib.ResultReg [resultreg_default]
+Compiling architecture lab4_dp_arch of entity xil_defaultlib.Lab4_dp [lab4_dp_default]
+Compiling architecture behavior of entity xil_defaultlib.lab4_dp_tb
+Built simulation snapshot Lab4_dp_tb_behav
+run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:11 . Memory (MB): peak = 1185.676 ; gain = 0.000
+INFO: [USF-XSim-69] 'elaborate' step finished in '11' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.sim/Lab4_dp/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "Lab4_dp_tb_behav -key {Behavioral:Lab4_dp:Functional:Lab4_dp_tb} -tclbatch {Lab4_dp_tb.tcl} -view {C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4_dp_tb_behav.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+open_wave_config C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4_dp_tb_behav.wcfg
+source Lab4_dp_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+Note: Step 1: wait_ready_high
+Time: 10 ns  Iteration: 0  Process: /Lab4_dp_tb/stim_proc  File: C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.srcs/sim_1/new/Lab4_dp_tb.vhd
+Note: Step 2: inc_index_offset
+Time: 20 ns  Iteration: 0  Process: /Lab4_dp_tb/stim_proc  File: C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.srcs/sim_1/new/Lab4_dp_tb.vhd
+Note: Step 3: get_base
+Time: 30 ns  Iteration: 0  Process: /Lab4_dp_tb/stim_proc  File: C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.srcs/sim_1/new/Lab4_dp_tb.vhd
+Note: Step 4: store_base
+Time: 40 ns  Iteration: 0  Process: /Lab4_dp_tb/stim_proc  File: C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.srcs/sim_1/new/Lab4_dp_tb.vhd
+Note: Step 5: get_next
+Time: 50 ns  Iteration: 0  Process: /Lab4_dp_tb/stim_proc  File: C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.srcs/sim_1/new/Lab4_dp_tb.vhd
+Note: Step 6: store_next
+Time: 60 ns  Iteration: 0  Process: /Lab4_dp_tb/stim_proc  File: C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.srcs/sim_1/new/Lab4_dp_tb.vhd
+Note: Step 7: store_result
+Time: 70 ns  Iteration: 0  Process: /Lab4_dp_tb/stim_proc  File: C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.srcs/sim_1/new/Lab4_dp_tb.vhd
+Note: Step 8: wait_ready_low
+Time: 80 ns  Iteration: 0  Process: /Lab4_dp_tb/stim_proc  File: C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.srcs/sim_1/new/Lab4_dp_tb.vhd
+Note: All tests passed successfully!
+Time: 90 ns  Iteration: 0  Process: /Lab4_dp_tb/stim_proc  File: C:/Users/C27Jayden.Randolph/ece383_wksp/lab4/Lab04_cadet_code/Lab4.srcs/sim_1/new/Lab4_dp_tb.vhd
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'Lab4_dp_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:01 ; elapsed = 00:00:26 . Memory (MB): peak = 1220.961 ; gain = 53.680
